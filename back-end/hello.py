@@ -1,9 +1,11 @@
 from flask import Flask, request, redirect, url_for
 from werkzeug.utils import secure_filename
 import os
-
+from flask_cors import CORS
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = '/uploads'
+# flask --app hello run -p 8000
+CORS(app)  # Enable CORS for all routes
+app.config['UPLOAD_FOLDER'] = '/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/uploads/'
 
 @app.route("/")
 def hello_world():
@@ -11,6 +13,9 @@ def hello_world():
 
 @app.route('/uploader', methods=['POST'])
 def upload_file():
+    print('-------------------')
+    print(request.files)
+    print('-------------------')
     if 'videoFile' not in request.files:
         return 'No file part'
     videoFile = request.files['videoFile']
