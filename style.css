@@ -19,7 +19,7 @@ h1{
 }
 .uploadZone h2{
     text-align: center;
-    display: inline;
+    /* display: inline; */
 }
 body{
     margin: 0;
