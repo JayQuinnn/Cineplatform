@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Video Upload Page</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/enhance">Enhance</a></li>
+                <li><a href="/research">Research</a></li>
+                <li><a href="/quiz">Quiz</a></li>
+                <li><a href="/tools">Tools</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Enhance a Video</h1>
+    <div class="uploadZone basic">
+        <h2 class="toggleBasic">Basic</h2> 
+        <!-- <h2 class="toggleAdvanved">Advanced</h2> -->
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="videoFile" accept="video/*">
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+
+    <!-- Display the uploaded video
+    <video width="640" height="360" controls>
+        <source src="uploaded-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video> -->
+</body>
+</html>
