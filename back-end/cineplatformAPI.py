@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 import os
 from flask_cors import CORS
 app = Flask(__name__)
-# flask --app hello run -p 8000
+# flask --app cineplatformAPI run -p 8000
 CORS(app)  # Enable CORS for all routes
 app.config['UPLOAD_FOLDER'] = '/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/uploads/'
 
