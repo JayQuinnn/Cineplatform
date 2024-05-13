@@ -24,8 +24,14 @@ def upload_file():
     if videoFile:
         filename = secure_filename(videoFile.filename)
         videoFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        pathFileName = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        sendToResolve(pathFileName=pathFileName)
         return f'File {filename} uploaded successfully'
     return 'File upload failed'
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
+
+
+def sendToResolve(pathFileName):
+    print('Sending ' + str(pathFileName) + ' to resolve.')
