@@ -21,33 +21,27 @@
     <h1>Enhance a Video</h1>
     <div class="uploadZone basic">
         <h2 class="toggleBasic">Basic</h2>
-        <form action="/uploader" method="post" enctype="multipart/form-data">
+        <form action="/uploader" method="post" id='formSubmit' enctype="multipart/form-data">
             <label class="custom-file-upload">
                 <input type="file" name="videoFile" accept="video/*">
                 <img src="imgs/upload.png" alt="">
             </label>
-            <input type="submit" value="Upload">
+            <input id='idSubmit' type="button" value="Upload">
         </form>
     </div>
 
     <script>
 
-        // Get a reference to the file input element
+        document.getElementById('idSubmit').addEventListener('click', async (event) => {
+        event.preventDefault(); // Prevent the default form submission behavior
+
         const fileInput = document.querySelector('input[type="file"]');
-
-        // Add an event listener to the form submission
-        document.querySelector('form').addEventListener('submit', async (event) => {
-            event.preventDefault(); // Prevent the default form submission behavior
-
-        // Get the selected file
         const file = fileInput.files[0];
 
-        // Create a FormData object
         const formData = new FormData();
-        formData.append('videoFile', file); // 'videoFile' should match the name attribute in your form
+        formData.append('videoFile', file);
 
         try {
-            // Make an HTTP POST request to your API endpoint
             const response = await fetch('http://127.0.0.1:8000/uploader', {
                 method: 'POST',
                 body: formData,
@@ -55,7 +49,7 @@
 
             if (response.ok) {
                 console.log('File uploaded successfully!');
-                // Handle any other logic here (e.g., display a success message)
+               // Handle any other logic here (e.g., display a success message)
             } else {
                 console.error('Error uploading file:', response.statusText);
                 // Handle error cases (e.g., display an error message)
@@ -64,7 +58,7 @@
             console.error('An error occurred:', error);
             // Handle network errors or other exceptions
         }
-    });
+        });
 
 
     </script>
