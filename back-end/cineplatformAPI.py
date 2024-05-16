@@ -19,6 +19,19 @@ app.config['UPLOAD_FOLDER'] = '/Users/jochem/Documents/GitHub/Cineplatform/Cinep
 def hello_world():
     return "Hello, World!"
 
+@app.route('/getproperty')
+def remoteClipPropertyGrabber():
+    project = projectManager.GetCurrentProject()
+    mediaPool = project.GetMediaPool()
+    currentTimeline = print(mediaPool.GetCurrentFolder().GetClipList()[0].GetClipProperty())
+    # currentVideoItem = currentTimeline.GetCurrentVideoItem()
+    # currentClip = currentVideoItem.GetMediaPoolItem()
+    # print(currentClip.GetClipProperty())
+    return 'Success'
+
+
+
+
 @app.route('/uploader', methods=['POST'])
 def upload_file():
     print('-------------------')
