@@ -1,5 +1,5 @@
 # flask --app cineplatformAPI run -p 8000
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, jsonify, make_response
 from werkzeug.utils import secure_filename
 import os
 from flask_cors import CORS
@@ -34,7 +34,7 @@ def upload_file():
         videoFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         pathFileName = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         sendToResolve(pathFileName=pathFileName, fileName=filename)
-        return f'File {filename} uploaded successfully'
+        return make_response(jsonify({'message': f'File {filename} uploaded successfully'}), 200)
     return 'File upload failed'
 
 def sendToResolve(pathFileName, fileName):
