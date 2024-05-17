@@ -21,7 +21,14 @@
     </header>
     <h1>Developer Dashboard</h1>
     <button id="clipPropery">Check Property</button>
-    <div id="propertyOutput">Output will appear here.</div>
+    <button id="getProjectSettings">Check Project settings</button>
+    <!-- <div id="propertyOutput">Clip output will appear here.</div>
+    <div id="projectSettings">Project settings will appear here.</div> -->
+
+    <div class="wrapper">
+        <div id="propertyOutput" class="dashboard-left">Left</div>
+        <div id="projectSettings" class="dashboard-right">Right</div>
+    </div>
     <script>
         document.getElementById('clipPropery').addEventListener('click', async (event) => {
             event.preventDefault(); // Prevent the default form submission behavior
@@ -29,6 +36,15 @@
             const clipPropery = await response.json();
             console.log(clipPropery);
             propertyOutput = document.getElementById('propertyOutput')
+            propertyOutput.innerText = JSON.stringify(clipPropery)
+        });
+
+        document.getElementById('getProjectSettings').addEventListener('click', async (event) => {
+            event.preventDefault(); // Prevent the default form submission behavior
+            const response = await fetch("http://127.0.0.1:8000/projectsettings");
+            const clipPropery = await response.json();
+            console.log(clipPropery);
+            propertyOutput = document.getElementById('projectSettings')
             propertyOutput.innerText = JSON.stringify(clipPropery)
         });
 

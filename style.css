@@ -80,3 +80,26 @@ label img {
     color: #3274ca;
     text-decoration: none;
 }
+
+.wrapper {
+    display: flex;
+    max-width: 100vw;
+    flex-direction: column;
+}
+
+.dashboard-left, .dashboard-right {
+    flex: 1; /* Equal width for both buttons */
+    padding: 10px;
+    text-align: center;
+}
+
+.dashboard-left {
+    background-color: #f0a500; /* Set your desired background color */
+    
+}
+
+.dashboard-right {
+    background-color: #007acc; /* Set your desired background color */
+    text-wrap: pretty;
+}
+
