@@ -23,11 +23,11 @@ def hello_world():
 def remoteClipPropertyGrabber():
     project = projectManager.GetCurrentProject()
     mediaPool = project.GetMediaPool()
-    currentTimeline = print(mediaPool.GetCurrentFolder().GetClipList()[0].GetClipProperty())
+    currentTimeline = mediaPool.GetCurrentFolder().GetClipList()[0].GetClipProperty()
     # currentVideoItem = currentTimeline.GetCurrentVideoItem()
     # currentClip = currentVideoItem.GetMediaPoolItem()
     # print(currentClip.GetClipProperty())
-    return 'Success'
+    return mediaPool.GetCurrentFolder().GetClipList()[0].GetClipProperty()
 
 
 
