@@ -26,17 +26,25 @@
     <div id="projectSettings">Project settings will appear here.</div> -->
 
     <div class="wrapper">
-        <div id="propertyOutput" class="dashboard-left">Left</div>
+        <div id="propertyOutput" class="dashboard-left"><p><span class="propertyKey">Key:</span> <span class="propertyValue">Value</span></p></div>
         <div id="projectSettings" class="dashboard-right">Right</div>
     </div>
     <script>
         document.getElementById('clipPropery').addEventListener('click', async (event) => {
+            let propertyOutputHTML = ''
             event.preventDefault(); // Prevent the default form submission behavior
             const response = await fetch("http://127.0.0.1:8000/getproperty");
-            const clipPropery = await response.json();
-            console.log(clipPropery);
+            const clipProperty = await response.json();
+            console.log(clipProperty);
+            for (const key in clipProperty) {
+                if (clipProperty.hasOwnProperty(key)) {
+                    const clipProperyKey = key
+                    const clipProperyValue = clipProperty[key]
+                    propertyOutputHTML = propertyOutputHTML + `<p><span class="propertyKey">${clipProperyKey}:</span> <span class="propertyValue">${clipProperyValue}</span></p>`
+            }
+            }
             propertyOutput = document.getElementById('propertyOutput')
-            propertyOutput.innerText = JSON.stringify(clipPropery)
+            propertyOutput.innerHTML = propertyOutputHTML
         });
 
         document.getElementById('getProjectSettings').addEventListener('click', async (event) => {
