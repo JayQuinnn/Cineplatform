@@ -23,7 +23,6 @@ def hello_world():
 def remoteClipPropertyGrabber():
     project = projectManager.GetCurrentProject()
     projectSettings = project.GetSetting()
-    print(projectSettings)
     mediaPool = project.GetMediaPool()
     currentTimeline = mediaPool.GetCurrentFolder().GetClipList()[0].GetClipProperty()
     # currentVideoItem = currentTimeline.GetCurrentVideoItem()
@@ -39,9 +38,6 @@ def remoteProjectSettingsGrabber():
 
 @app.route('/uploader', methods=['POST'])
 def upload_file():
-    print('-------------------')
-    print(request.files)
-    print('-------------------')
     if 'videoFile' not in request.files:
         return 'No file part'
     videoFile = request.files['videoFile']
