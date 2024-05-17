@@ -35,12 +35,11 @@
             event.preventDefault(); // Prevent the default form submission behavior
             const response = await fetch("http://127.0.0.1:8000/getproperty");
             const clipProperty = await response.json();
-            console.log(clipProperty);
             for (const key in clipProperty) {
                 if (clipProperty.hasOwnProperty(key)) {
-                    const clipProperyKey = key
-                    const clipProperyValue = clipProperty[key]
-                    propertyOutputHTML = propertyOutputHTML + `<p><span class="propertyKey">${clipProperyKey}:</span> <span class="propertyValue">${clipProperyValue}</span></p>`
+                    const clipPropertyKey = key
+                    const clipPropertyValue = clipProperty[key]
+                    propertyOutputHTML = propertyOutputHTML + `<p><span class="propertyKey">${clipPropertyKey}:</span> <span class="propertyValue">${clipPropertyValue}</span></p>`
             }
             }
             propertyOutput = document.getElementById('propertyOutput')
@@ -48,12 +47,19 @@
         });
 
         document.getElementById('getProjectSettings').addEventListener('click', async (event) => {
+            let projectSettingsHTML = ''
             event.preventDefault(); // Prevent the default form submission behavior
             const response = await fetch("http://127.0.0.1:8000/projectsettings");
-            const clipPropery = await response.json();
-            console.log(clipPropery);
+            const projectSettings = await response.json();
+            for (const key in projectSettings) {
+                if (projectSettings.hasOwnProperty(key)) {
+                    const projectSettingsKey = key
+                    const projectSettingsValue = projectSettings[key]
+                    projectSettingsHTML = projectSettingsHTML + `<p><span class="propertyKey">${projectSettingsKey}:</span> <span class="propertyValue">${projectSettingsValue}</span></p>`
+            }
+            }
             propertyOutput = document.getElementById('projectSettings')
-            propertyOutput.innerText = JSON.stringify(clipPropery)
+            propertyOutput.innerHTML = projectSettingsHTML
         });
 
     </script>
