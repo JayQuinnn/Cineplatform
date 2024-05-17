@@ -22,6 +22,8 @@ def hello_world():
 @app.route('/getproperty')
 def remoteClipPropertyGrabber():
     project = projectManager.GetCurrentProject()
+    projectSettings = project.GetSetting()
+    print(projectSettings)
     mediaPool = project.GetMediaPool()
     currentTimeline = mediaPool.GetCurrentFolder().GetClipList()[0].GetClipProperty()
     # currentVideoItem = currentTimeline.GetCurrentVideoItem()
@@ -29,8 +31,11 @@ def remoteClipPropertyGrabber():
     # print(currentClip.GetClipProperty())
     return mediaPool.GetCurrentFolder().GetClipList()[0].GetClipProperty()
 
-
-
+@app.route('/projectsettings')
+def remoteProjectSettingsGrabber():
+    project = projectManager.GetCurrentProject()
+    projectSettings = project.GetSetting()
+    return projectSettings
 
 @app.route('/uploader', methods=['POST'])
 def upload_file():
