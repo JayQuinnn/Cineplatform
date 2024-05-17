@@ -84,7 +84,6 @@ label img {
 .wrapper {
     display: flex;
     max-width: 100vw;
-    flex-direction: column;
 }
 
 .dashboard-left, .dashboard-right {
@@ -94,12 +93,47 @@ label img {
 }
 
 .dashboard-left {
-    background-color: #f0a500; /* Set your desired background color */
+    background-color: #121F31; /* Set your desired background color */
+    border-radius: 15px;
     
 }
 
 .dashboard-right {
-    background-color: #007acc; /* Set your desired background color */
-    text-wrap: pretty;
+    margin-left: 10px;
+    background-color: #121F31; /* Set your desired background color */
+    border-radius: 15px;
 }
 
+.propertyKey{
+    font-size: large;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+button{
+    color: white;
+    background-color: #3274ca;
+    border: none;
+    border-radius: 15px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#idSubmit{
+    color: white;
+    background-color: #3274ca;
+    border: none;
+    border-radius: 15px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

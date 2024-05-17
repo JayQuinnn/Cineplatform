@@ -26,12 +26,12 @@
     <div id="projectSettings">Project settings will appear here.</div> -->
 
     <div class="wrapper">
-        <div id="propertyOutput" class="dashboard-left"><p><span class="propertyKey">Key:</span> <span class="propertyValue">Value</span></p></div>
-        <div id="projectSettings" class="dashboard-right">Right</div>
+        <div id="propertyOutput" class="dashboard-left"><h2>Clip Property</h2></div>
+        <div id="projectSettings" class="dashboard-right"><h2>Project Settings</h2></div>
     </div>
     <script>
         document.getElementById('clipPropery').addEventListener('click', async (event) => {
-            let propertyOutputHTML = ''
+            let propertyOutputHTML = '<h2>Clip Property</h2>'
             event.preventDefault(); // Prevent the default form submission behavior
             const response = await fetch("http://127.0.0.1:8000/getproperty");
             const clipProperty = await response.json();
@@ -47,7 +47,7 @@
         });
 
         document.getElementById('getProjectSettings').addEventListener('click', async (event) => {
-            let projectSettingsHTML = ''
+            let projectSettingsHTML = '<h2>Project Settings</h2>'
             event.preventDefault(); // Prevent the default form submission behavior
             const response = await fetch("http://127.0.0.1:8000/projectsettings");
             const projectSettings = await response.json();
