@@ -23,7 +23,7 @@ def hello_world():
 def getRenderStatus():
     project = projectManager.GetCurrentProject()
     renderStatus = project.IsRenderingInProgress()
-    return str(renderStatus)
+    return make_response(jsonify({'Render status': str(renderStatus)}), 200)
 
 @app.route('/renderlist')
 def getRenderList():

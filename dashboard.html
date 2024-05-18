@@ -20,11 +20,13 @@
         </nav>
     </header>
     <h1>Developer Dashboard</h1>
+    <button id="getRenderStatus">Check Render Status</button>
+    <button id="getRenderQueue">Check Render Queue</button>
     <button id="clipPropery">Check Property</button>
     <button id="getProjectSettings">Check Project settings</button>
     <!-- <div id="propertyOutput">Clip output will appear here.</div>
     <div id="projectSettings">Project settings will appear here.</div> -->
-
+    <div id="renderStatus"></div>
     <div class="wrapper">
         <div id="propertyOutput" class="dashboard-left"><h2>Clip Property</h2></div>
         <div id="projectSettings" class="dashboard-right"><h2>Project Settings</h2></div>
@@ -44,6 +46,37 @@
             }
             propertyOutput = document.getElementById('propertyOutput')
             propertyOutput.innerHTML = propertyOutputHTML
+        });
+
+        document.getElementById('getProjectSettings').addEventListener('click', async (event) => {
+            let projectSettingsHTML = '<h2>Project Settings</h2>'
+            event.preventDefault(); // Prevent the default form submission behavior
+            const response = await fetch("http://127.0.0.1:8000/projectsettings");
+            const projectSettings = await response.json();
+            for (const key in projectSettings) {
+                if (projectSettings.hasOwnProperty(key)) {
+                    const projectSettingsKey = key
+                    const projectSettingsValue = projectSettings[key]
+                    projectSettingsHTML = projectSettingsHTML + `<p><span class="propertyKey">${projectSettingsKey}:</span> <span class="propertyValue">${projectSettingsValue}</span></p>`
+            }
+            }
+            propertyOutput = document.getElementById('projectSettings')
+            propertyOutput.innerHTML = projectSettingsHTML
+        });
+
+        document.getElementById('getRenderStatus').addEventListener('click', async (event) => {
+            let renderStatusHTML = ''
+            event.preventDefault(); // Prevent the default form submission behavior
+            const response = await fetch("http://127.0.0.1:8000/renderstatus");
+            const renderStatus = await response.json();
+            for (const key in renderStatus) {
+                if (renderStatus.hasOwnProperty(key)) {
+                        const renderStatusKey = key
+                        const renderStatusValue = renderStatus[key]
+                        renderStatusHTML = renderStatusHTML + ` ${renderStatusKey} ${renderStatusValue}`
+                }}
+            renderStatusOutput = document.getElementById('renderStatus')
+            renderStatusOutput.innerHTML = renderStatusHTML
         });
 
         document.getElementById('getProjectSettings').addEventListener('click', async (event) => {
