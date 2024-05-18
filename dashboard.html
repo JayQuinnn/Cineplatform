@@ -24,8 +24,6 @@
     <button id="getRenderQueue">Check Render Queue</button>
     <button id="clipPropery">Check Property</button>
     <button id="getProjectSettings">Check Project settings</button>
-    <!-- <div id="propertyOutput">Clip output will appear here.</div>
-    <div id="projectSettings">Project settings will appear here.</div> -->
     <div id="renderStatus"></div>
     <div  class="renderQueue" id="renderQueue"></div>
     <div class="wrapper">
@@ -35,7 +33,7 @@
     <script>
         document.getElementById('clipPropery').addEventListener('click', async (event) => {
             let propertyOutputHTML = '<h2>Clip Property</h2>'
-            event.preventDefault(); // Prevent the default form submission behavior
+            event.preventDefault();
             const response = await fetch("http://127.0.0.1:8000/getproperty");
             const clipProperty = await response.json();
             for (const key in clipProperty) {
@@ -51,7 +49,7 @@
 
         document.getElementById('getProjectSettings').addEventListener('click', async (event) => {
             let projectSettingsHTML = '<h2>Project Settings</h2>'
-            event.preventDefault(); // Prevent the default form submission behavior
+            event.preventDefault();
             const response = await fetch("http://127.0.0.1:8000/projectsettings");
             const projectSettings = await response.json();
             for (const key in projectSettings) {
@@ -67,7 +65,7 @@
 
         document.getElementById('getRenderQueue').addEventListener('click', async (event) => {
             let renderQueueHTML = ''
-            event.preventDefault(); // Prevent the default form submission behavior
+            event.preventDefault();
             const response = await fetch("http://127.0.0.1:8000/renderlist");
             const renderQueue = await response.json();
             console.log(renderQueue)
@@ -90,7 +88,7 @@
 
         document.getElementById('getRenderStatus').addEventListener('click', async (event) => {
             let renderStatusHTML = ''
-            event.preventDefault(); // Prevent the default form submission behavior
+            event.preventDefault();
             const response = await fetch("http://127.0.0.1:8000/renderstatus");
             const renderStatus = await response.json();
             for (const key in renderStatus) {
