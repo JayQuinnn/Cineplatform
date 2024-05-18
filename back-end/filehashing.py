@@ -36,8 +36,7 @@ def decodeHashLink(hashedFilename):
 def clearHashStorage():
     with open("/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/currentfiles.json", "w") as file:
         file.truncate()
+        file.write("{}")
     return
-
-
 
 

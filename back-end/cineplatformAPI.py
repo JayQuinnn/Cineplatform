@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 import os
 from flask_cors import CORS
 import DaVinciResolveScript as dvr_script
+from filehashing import addHashLink, decodeHashLink, clearHashStorage
 print('Davinci Resolve imported sucessfully.')
 import sys
 # 1. Assign Resolve
@@ -18,6 +19,11 @@ app.config['UPLOAD_FOLDER'] = '/Users/jochem/Documents/GitHub/Cineplatform/Cinep
 @app.route("/")
 def hello_world():
     return "Hello, World!"
+
+@app.route('/clearhashstorage')
+def clearingstorage():
+    clearHashStorage()
+    return 'hash storage cleared.'
 
 @app.route('/renderstatus')
 def getRenderStatus():
@@ -64,6 +70,7 @@ def upload_file():
     return 'File upload failed'
 
 def sendToResolve(pathFileName, fileName):
+    addHashLink(fileName)
     print('Sending ' + str(pathFileName) + ' to resolve.')
     # 3. Setup a Project
     pname = fileName
