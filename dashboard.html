@@ -27,7 +27,7 @@
     <!-- <div id="propertyOutput">Clip output will appear here.</div>
     <div id="projectSettings">Project settings will appear here.</div> -->
     <div id="renderStatus"></div>
-    <div id="renderQueue"></div>
+    <div  class="renderQueue" id="renderQueue"></div>
     <div class="wrapper">
         <div id="propertyOutput" class="dashboard-left"><h2>Clip Property</h2></div>
         <div id="projectSettings" class="dashboard-right"><h2>Project Settings</h2></div>
@@ -78,7 +78,8 @@
                         arrayRenderQueue.forEach(element => {
                             for(const queueIndex in element){
                                 if (element.hasOwnProperty(queueIndex)) {
-                                    renderQueueHTML = renderQueueHTML + ` ${queueIndex} ${element[queueIndex]}`
+                                    renderQueueHTML = renderQueueHTML + `<p><span class="propertyKey">${queueIndex}:</span> <span class="propertyValue">${element[queueIndex]}</span></p>`
+                                    
                                 }
                             }
                         });

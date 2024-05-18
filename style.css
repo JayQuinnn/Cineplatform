@@ -138,3 +138,12 @@ button{
     cursor: pointer;
     box-shadow: 1px 1px 5px #000000;
 }
+
+.renderQueue{
+    width: 50vw;
+    background-color: #121F31; /* Set your desired background color */
+    border-radius: 15px;
+    flex: 1; /* Equal width for both buttons */
+    padding: 10px;
+    text-align: center;
+}
