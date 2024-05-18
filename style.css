@@ -125,7 +125,7 @@ button{
     cursor: pointer;
 }
 
-#idSubmit{
+/* #idSubmit{
     color: white;
     background-color: #3274ca;
     border: none;
@@ -138,7 +138,7 @@ button{
     margin: 4px 2px;
     cursor: pointer;
     box-shadow: 1px 1px 5px #000000;
-}
+} */
 
 #renderDetails{
     width: 50vw;

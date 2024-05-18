@@ -53,7 +53,7 @@
         document.getElementById('clipPropery').addEventListener('click', async (event) => {
             let propertyOutputHTML = '<h2>Clip Property</h2>'
             event.preventDefault();
-            const response = await fetch("http://127.0.0.1:8000/getproperty");
+            const response = await fetch("http://94.224.211.168:5501/getproperty");
             const clipProperty = await response.json();
             for (const key in clipProperty) {
                 if (clipProperty.hasOwnProperty(key)) {
@@ -69,7 +69,7 @@
         document.getElementById('getProjectSettings').addEventListener('click', async (event) => {
             let projectSettingsHTML = '<h2>Project Settings</h2>'
             event.preventDefault();
-            const response = await fetch("http://127.0.0.1:8000/projectsettings");
+            const response = await fetch("http://94.224.211.168:5501/projectsettings");
             const projectSettings = await response.json();
             for (const key in projectSettings) {
                 if (projectSettings.hasOwnProperty(key)) {
@@ -85,7 +85,7 @@
         document.getElementById('getRenderQueue').addEventListener('click', async (event) => {
             let renderQueueHTML = '<h2>Render Details</h2>'
             event.preventDefault();
-            const response = await fetch("http://127.0.0.1:8000/renderlist");
+            const response = await fetch("http://94.224.211.168:5501/renderlist");
             const renderQueue = await response.json();
             console.log(renderQueue)
             for (const key in renderQueue) {
@@ -108,7 +108,7 @@
         document.getElementById('getRenderStatus').addEventListener('click', async (event) => {
             let renderStatusHTML = ''
             event.preventDefault();
-            const response = await fetch("http://127.0.0.1:8000/renderstatus");
+            const response = await fetch("http://94.224.211.168:5501/renderstatus");
             const renderStatus = await response.json();
             for (const key in renderStatus) {
                 if (renderStatus.hasOwnProperty(key)) {
@@ -124,7 +124,7 @@
             event.preventDefault();
             let text = "Are you sure you want to clear all the hash storage?";
             if (confirm(text) == true) {
-                const response = await fetch("http://127.0.0.1:8000/clearhashstorage")
+                const response = await fetch("http://94.224.211.168:5501/clearhashstorage")
                 alert("hash storage has been cleared.")
             } else {
 
@@ -135,7 +135,7 @@
             event.preventDefault();
             let outputHTML = ``
             let hashedFileName = document.getElementById('hashNameInput').value
-            const response = await fetch(`http://127.0.0.1:8000/decodehash/${hashedFileName}`)
+            const response = await fetch(`http://94.224.211.168:5501/decodehash/${hashedFileName}`)
             decodedHashOBJ = await response.json()
             console.log(decodedHashOBJ)
             decodedHash = decodedHashOBJ['Decoded Hash']
@@ -146,7 +146,7 @@
 
         document.getElementById('getHashedFiles').addEventListener('click', async (event) => {
             event.preventDefault();
-            const response = await fetch(`http://127.0.0.1:8000/allfiles`)
+            const response = await fetch(`http://94.224.211.168:5501/allfiles`)
             hashedFiles = await response.json()
             console.log(hashedFiles)
             alert(JSON.stringify(hashedFiles))
@@ -155,7 +155,7 @@
         document.getElementById('encodeHash').addEventListener('click', async (event) => {
             event.preventDefault();
             let originalFileName = document.getElementById('fileNameInput').value
-            const response = await fetch(`http://127.0.0.1:8000/addcodehash/${originalFileName}`)
+            const response = await fetch(`http://94.224.211.168:5501/addcodehash/${originalFileName}`)
             encodedHashOBJ = await response.json()
             encodedHash = encodedHashOBJ['Encoded Hash']
             alert(encodedHash)

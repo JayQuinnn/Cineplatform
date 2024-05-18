@@ -22,16 +22,22 @@
     <h1>Enhance a Video</h1>
     <div class="uploadZone basic">
         <h2 class="toggleBasic">Basic</h2>
-        <form action="/uploader" method="post" id='formSubmit' enctype="multipart/form-data">
+        <!-- <form action="/uploader" method="post" id='formSubmit' enctype="multipart/form-data"> -->
             <label class="custom-file-upload">
                 <input type="file" name="videoFile" accept="video/*">
                 <img src="imgs/upload.png" alt="">
             </label>
-            <input id='idSubmit' type="button" value="Upload">
-        </form>
+            <button id='idSubmit' type="button" value="Upload">Upload</button>
+        <!-- </form> -->
     </div>
 
+    <button id='refreshChecker'>Refresh checker</button>
+
     <script>
+        document.getElementById('refreshChecker').addEventListener('click', async (event) =>{
+            event.preventDefault()
+            console.log('Aaaaaaaaaaa')
+        })
 
         document.getElementById('idSubmit').addEventListener('click', async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -43,7 +49,7 @@
         formData.append('videoFile', file);
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/uploader', {
+            const response = await fetch('http://94.224.211.168:5501/uploader', {
                 method: 'POST',
                 body: formData,
             });
@@ -59,15 +65,10 @@
             console.error('An error occurred:', error);
             // Handle network errors or other exceptions
         }
+        return false
         });
 
 
     </script>
-
-    <!-- Display the uploaded video
-    <video width="640" height="360" controls>
-        <source src="uploaded-video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video> -->
 </body>
 </html>
