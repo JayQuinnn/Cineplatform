@@ -33,7 +33,10 @@ def decodeHashLink(hashedFilename):
         return "Key '{hashedFilename}' not found in the JSON data."
 
 
-
+def clearHashStorage():
+    with open("/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/currentfiles.json", "w") as file:
+        file.truncate()
+    return
 
 
 
