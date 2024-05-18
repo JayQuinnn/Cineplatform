@@ -78,7 +78,7 @@ def upload_file(email):
         outputName = fileuuid+'_output.'+extension
         addEntry(fileuuid, filename,outputName,email)
         sendToResolve(pathFileName=newPathName, fileName=newfileName ,outputName=outputName)
-        return make_response(jsonify({'message': f'File {filename} uploaded successfully'}), 200)
+        return make_response(jsonify({'UUID': f'{fileuuid}'}), 200)
     return 'File upload failed'
 
 def sendToResolve(pathFileName, fileName, outputName):

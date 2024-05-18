@@ -56,6 +56,9 @@
 
             if (response.ok) {
                 console.log('File uploaded successfully!');
+                data = await response.json()
+                console.log(data)
+                alert(data.UUID)
                // Handle any other logic here (e.g., display a success message)
             } else {
                 console.error('Error uploading file:', response.statusText);
