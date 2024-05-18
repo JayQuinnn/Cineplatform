@@ -19,6 +19,18 @@ app.config['UPLOAD_FOLDER'] = '/Users/jochem/Documents/GitHub/Cineplatform/Cinep
 def hello_world():
     return "Hello, World!"
 
+@app.route('/renderstatus')
+def getRenderStatus():
+    project = projectManager.GetCurrentProject()
+    renderStatus = project.IsRenderingInProgress()
+    return str(renderStatus)
+
+@app.route('/renderlist')
+def getRenderList():
+    project = projectManager.GetCurrentProject()
+    renderList = project.GetRenderJobList()
+    return str(renderList)
+
 @app.route('/getproperty')
 def remoteClipPropertyGrabber():
     project = projectManager.GetCurrentProject()
