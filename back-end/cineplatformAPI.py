@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 import os
 from flask_cors import CORS
 import DaVinciResolveScript as dvr_script
-from filehashing import addHashLink, decodeHashLink, clearHashStorage
+from filehashing import addHashLink, decodeHashLink, clearHashStorage, showAllHashedFiles
 print('Davinci Resolve imported sucessfully.')
 import sys
 # 1. Assign Resolve
@@ -32,7 +32,8 @@ def addCodehash(originalFilename):
 
 @app.route('/allfiles')
 def showAllFiles():
-    return
+    allFiles = showAllHashedFiles()
+    return allFiles
 
 @app.route('/decodehash//<hashedFilename>')
 def decodehash(hashedFilename):

@@ -40,4 +40,9 @@ def clearHashStorage():
         file.write("{}")
     return
 
+def showAllHashedFiles():
+    with open('/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/currentfiles.json') as json_file:
+        data = json.load(json_file)
+    print(data)
+    return data
 
