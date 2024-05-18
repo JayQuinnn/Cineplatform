@@ -28,7 +28,7 @@ def clearingstorage():
 @app.route('/addcodehash/<originalFilename>')
 def addCodehash(originalFilename):
     hashedFilename = addHashLink(originalFilename)
-    return hashedFilename
+    return make_response(jsonify({'Encoded Hash': hashedFilename}), 200)
 
 @app.route('/allfiles')
 def showAllFiles():

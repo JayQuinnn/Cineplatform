@@ -147,6 +147,15 @@
             alert(JSON.stringify(hashedFiles))
         });
         
+        document.getElementById('encodeHash').addEventListener('click', async (event) => {
+            event.preventDefault();
+            let originalFileName = document.getElementById('fileNameInput').value
+            const response = await fetch(`http://127.0.0.1:8000/addcodehash/${originalFileName}`)
+            encodedHashOBJ = await response.json()
+            encodedHash = encodedHashOBJ['Encoded Hash']
+            alert(encodedHash)
+        });
+
 
     </script>
 </body>
