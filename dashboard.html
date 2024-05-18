@@ -19,20 +19,33 @@
             </ul>
         </nav>
     </header>
-    <h1>Developer Dashboard</h1>
-    <button id="getRenderStatus">Check Render Status</button>
-    <button id="getRenderQueue">Check Render Queue</button>
-    <button id="clipPropery">Check Property</button>
-    <button id="getProjectSettings">Check Project settings</button>
-    <button id="clearHashes">Clear Hashed Files</button>
-    <div id="renderStatus"></div>
-    <div class="wrapper">
-        <div class="dashboard-left" id="renderQueue"></div>
-        <div class="dashboard-right" id="renderDetails"></div>
-    </div>
-    <div class="wrapper">
-        <div id="propertyOutput" class="dashboard-left"><h2>Clip Property</h2></div>
-        <div id="projectSettings" class="dashboard-right"><h2>Project Settings</h2></div>
+    <div class="devDashboard">
+        <h1>Developer Dashboard</h1>
+        <div class="devButtons">
+            <button id="getRenderStatus">Check Render Status</button>
+            <button id="getRenderQueue">Check Render Queue</button>
+            <button id="clipPropery">Check Property</button>
+            <button id="getProjectSettings">Check Project settings</button>
+            <button id="clearHashes">Clear Hashed Files</button>
+        </div>
+        <div>
+            <input class="dashboardInput" type="text" id="hashNameInput" placeholder="Hash file name to decode">
+            <button id="getDecodedHash">Get Decoded Hash</button>
+        </div>
+        <div>
+            <input class="dashboardInput" type="text" id="fileNameInput" placeholder="Hash file name to add to storage">
+            <button id="encodeHash">Encode Hash</button>
+        </div>
+
+        <div id="renderStatus"></div>
+        <div class="wrapper">
+            <div class="dashboard-left" id="renderQueue"><h2>Render Queue</h2></div>
+            <div class="dashboard-right" id="renderDetails"><h2>Render Details</h2></div>
+        </div>
+        <div class="wrapper">
+            <div id="propertyOutput" class="dashboard-left"><h2>Clip Property</h2></div>
+            <div id="projectSettings" class="dashboard-right"><h2>Project Settings</h2></div>
+        </div>
     </div>
     <script>
         document.getElementById('clipPropery').addEventListener('click', async (event) => {
@@ -115,6 +128,16 @@
 
             }
         });
+
+        document.getElementById('getDecodedHash').addEventListener('click', async (event) => {
+            event.preventDefault();
+            let hashedFileName = document.getElementById('hashNameInput').value
+            const response = await fetch(`http://127.0.0.1:8000/decodehash/${hashedFileName}`)
+            decodedHashOBJ = await response.json()
+            decodedHash = decodedHashOBJ['Decoded Hash']
+            alert(decodedHash)
+        });
+        
 
     </script>
 </body>

@@ -38,7 +38,7 @@ def showAllFiles():
 @app.route('/decodehash//<hashedFilename>')
 def decodehash(hashedFilename):
     decodedFilename = decodeHashLink(hashedFilename)
-    return decodedFilename
+    return make_response(jsonify({'Decoded Hash': decodedFilename}), 200)
 
 @app.route('/renderstatus')
 def getRenderStatus():
