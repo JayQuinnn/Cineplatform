@@ -1,11 +1,13 @@
 # flask --app cineplatformAPI run -p 8000
 #TODO: Add UUID per file, then rename the file to the UUID
+import uuid
 from flask import Flask, request, redirect, url_for, jsonify, make_response
 from werkzeug.utils import secure_filename
 import os
 from flask_cors import CORS
 import DaVinciResolveScript as dvr_script
 from filehashing import addHashLink, decodeHashLink, clearHashStorage, showAllHashedFiles
+from db import addEntry
 print('Davinci Resolve imported sucessfully.')
 import sys
 # 1. Assign Resolve
@@ -67,8 +69,8 @@ def remoteProjectSettingsGrabber():
     projectSettings = project.GetSetting()
     return projectSettings
 
-@app.route('/uploader', methods=['POST'])
-def upload_file():
+@app.route('/uploader/<email>', methods=['POST'])
+def upload_file(email):
     if 'videoFile' not in request.files:
         return 'No file part'
     videoFile = request.files['videoFile']
@@ -78,12 +80,18 @@ def upload_file():
         filename = secure_filename(videoFile.filename)
         videoFile.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         pathFileName = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        sendToResolve(pathFileName=pathFileName, fileName=filename)
+        fileuuid = str(uuid.uuid4())
+        extension = pathFileName.split(".")[-1]
+        newfileName = fileuuid+'.'+extension
+        newPathName = os.path.join(app.config['UPLOAD_FOLDER'], newfileName)
+        os.rename(pathFileName, newPathName)
+        outputName = fileuuid+'_output.'+extension
+        addEntry(fileuuid, filename,outputName,email)
+        sendToResolve(pathFileName=newPathName, fileName=newfileName ,outputName=outputName)
         return make_response(jsonify({'message': f'File {filename} uploaded successfully'}), 200)
     return 'File upload failed'
 
-def sendToResolve(pathFileName, fileName):
-    addHashLink(fileName)
+def sendToResolve(pathFileName, fileName, outputName):
     print('Sending ' + str(pathFileName) + ' to resolve.')
     # 3. Setup a Project
     pname = fileName
@@ -115,7 +123,7 @@ def sendToResolve(pathFileName, fileName):
     Settings = {
         'SelectAllFrames': True,
         "TargetDir": "/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/uploads/output/",
-        "CustomName": "output",
+        "CustomName": f"{outputName}",
         "VideoQuality": 0,
         "ExportVideo": True,
         "ExportAudio": True,

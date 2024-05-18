@@ -49,7 +49,7 @@
         formData.append('videoFile', file);
 
         try {
-            const response = await fetch('http://94.224.211.168:5501/uploader', {
+            const response = await fetch('http://94.224.211.168:5501/uploader/test@email.com', {
                 method: 'POST',
                 body: formData,
             });
