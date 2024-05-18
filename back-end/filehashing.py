@@ -1,6 +1,7 @@
 import sys
 import time
 from datetime import date
+import json
 
 def generateHash(filename):
     today = date.today()
@@ -11,7 +12,31 @@ def generateHash(filename):
     print(convertedfilename)
     return convertedfilename
 
-filename = generateHash('exportius-5551890843jiffjkdlmfeaiuj.mp4')
+def addHashLink(originalFilename, hashedFilename):
+    with open("/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/currentfiles.json", "r") as file:
+        existing_data = json.load(file)
+    existing_data[hashedFilename] = originalFilename
+    with open("/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/currentfiles.json", "w") as file:
+       json.dump(existing_data, file, indent=4)
+    print("New key-value pair added successfully!")
+
+def decodeHashLink(hashedFilename):
+    with open('/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/currentfiles.json', 'r') as json_file:
+        data = json.load(json_file)
+    value = data.get(hashedFilename)
+    if value:
+        print(f"Value for key '{hashedFilename}': {value}")
+    else:
+        print(f"Key '{hashedFilename}' not found in the JSON data.")
+        return
+
+originalFilename = 'exportius-5551890843jiffjkdlmfeaiuj.mp4'
+hashedFilename = generateHash(originalFilename)
+addHashLink(originalFilename=originalFilename, hashedFilename=hashedFilename)
+decodeHashLink(hashedFilename=hashedFilename)
+
+
+
 
 
 
