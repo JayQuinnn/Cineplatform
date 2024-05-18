@@ -1,4 +1,5 @@
 # flask --app cineplatformAPI run -p 8000
+#TODO: Add UUID per file, then rename the file to the UUID
 from flask import Flask, request, redirect, url_for, jsonify, make_response
 from werkzeug.utils import secure_filename
 import os

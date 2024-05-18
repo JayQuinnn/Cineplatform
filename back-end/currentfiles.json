@@ -1,7 +1,18 @@
 {
-    "18052024220122Expor.mov": "Export.mov",
-    "18052024220237Adren.mov": "Adren_is_gonna_kill_someone.mov",
-    "18052024220404Expor.mov": "Export.mov",
-    "18052024221249Joche.mov": "JochemCr_Interactive_Particles.mov",
-    "18052024222253LineT.mov": "LineTop_JochemCr.mov"
+    "18052024220122Expor.mov": {
+        "originalName": "Export.mov",
+        "outputName": "Export_18052024220122_Output.mov",
+        "finishedRendering": true,
+        "progress": 100,
+        "email": "Lasseisalovelyman@skynet.net",
+        "downloaded": false
+    },
+    "18052024220122hello.mp4": {
+        "originalName": "hello.mp4",
+        "outputName": "hello_18052024220122_output.mp4",
+        "finishedRendering": true,
+        "progress": 69,
+        "email": "Lasseisaniceguy@skynet.net",
+        "downloaded": true
+    }
 }
