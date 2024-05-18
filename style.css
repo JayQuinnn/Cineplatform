@@ -147,3 +147,7 @@ button{
     padding: 10px;
     text-align: center;
 }
+
+#clearHashes{
+    background-color: rgb(248, 67, 67);
+}

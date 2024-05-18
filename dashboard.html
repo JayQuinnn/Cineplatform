@@ -24,6 +24,7 @@
     <button id="getRenderQueue">Check Render Queue</button>
     <button id="clipPropery">Check Property</button>
     <button id="getProjectSettings">Check Project settings</button>
+    <button id="clearHashes">Clear Hashed Files</button>
     <div id="renderStatus"></div>
     <div class="wrapper">
         <div class="dashboard-left" id="renderQueue"></div>
@@ -102,6 +103,17 @@
                 }}
             renderStatusOutput = document.getElementById('renderStatus')
             renderStatusOutput.innerHTML = renderStatusHTML
+        });
+
+        document.getElementById('clearHashes').addEventListener('click', async (event) => {
+            event.preventDefault();
+            let text = "Are you sure you want to clear all the hash storage?";
+            if (confirm(text) == true) {
+                const response = await fetch("http://127.0.0.1:8000/clearhashstorage")
+                alert("hash storage has been cleared.")
+            } else {
+
+            }
         });
 
     </script>
