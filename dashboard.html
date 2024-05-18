@@ -32,6 +32,7 @@
         <div>
             <input class="dashboardInput" type="text" id="hashNameInput" placeholder="Hash file name to decode">
             <button id="getDecodedHash">Get Decoded Hash</button>
+            <p id="decodedDownloadLink"></p>
         </div>
         <div>
             <input class="dashboardInput" type="text" id="fileNameInput" placeholder="Hash file name to add to storage">
@@ -132,11 +133,15 @@
 
         document.getElementById('getDecodedHash').addEventListener('click', async (event) => {
             event.preventDefault();
+            let outputHTML = ``
             let hashedFileName = document.getElementById('hashNameInput').value
             const response = await fetch(`http://127.0.0.1:8000/decodehash/${hashedFileName}`)
             decodedHashOBJ = await response.json()
+            console.log(decodedHashOBJ)
             decodedHash = decodedHashOBJ['Decoded Hash']
-            alert(decodedHash)
+            decodedDownloadLink = decodedHashOBJ['Download Link']
+            outputHTML = `<a href="${decodedDownloadLink}">Download ${decodedHash}</a>`
+            document.getElementById('decodedDownloadLink').innerHTML = outputHTML
         });
 
         document.getElementById('getHashedFiles').addEventListener('click', async (event) => {
