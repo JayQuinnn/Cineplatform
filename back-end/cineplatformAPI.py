@@ -7,7 +7,7 @@ import os
 from flask_cors import CORS
 import DaVinciResolveScript as dvr_script
 from filehashing import addHashLink, decodeHashLink, clearHashStorage, showAllHashedFiles
-from db import addEntry
+from db import addEntry, updateEntry, getAllEntries, clearDB
 print('Davinci Resolve imported sucessfully.')
 import sys
 # 1. Assign Resolve
@@ -25,23 +25,13 @@ def hello_world():
 
 @app.route('/clearhashstorage')
 def clearingstorage():
-    clearHashStorage()
+    clearDB()
     return 'hash storage cleared.'
-
-@app.route('/addcodehash/<originalFilename>')
-def addCodehash(originalFilename):
-    hashedFilename = addHashLink(originalFilename)
-    return make_response(jsonify({'Encoded Hash': hashedFilename}), 200)
 
 @app.route('/allfiles')
 def showAllFiles():
-    allFiles = showAllHashedFiles()
+    allFiles = getAllEntries()
     return make_response(jsonify(allFiles), 200)
-
-@app.route('/decodehash//<hashedFilename>')
-def decodehash(hashedFilename):
-    decodedFilename = decodeHashLink(hashedFilename)
-    return make_response(jsonify({'Decoded Hash': decodedFilename, f'Download Link': f'/back-end/uploads/output/{decodedFilename}'}), 200)
 
 @app.route('/renderstatus')
 def getRenderStatus():

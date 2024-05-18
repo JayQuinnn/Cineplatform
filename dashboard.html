@@ -34,10 +34,6 @@
             <button id="getDecodedHash">Get Decoded Hash</button>
             <p id="decodedDownloadLink"></p>
         </div>
-        <div>
-            <input class="dashboardInput" type="text" id="fileNameInput" placeholder="Hash file name to add to storage">
-            <button id="encodeHash">Encode Hash</button>
-        </div>
 
         <div id="renderStatus"></div>
         <div class="wrapper">
@@ -132,16 +128,11 @@
         });
 
         document.getElementById('getDecodedHash').addEventListener('click', async (event) => {
-            event.preventDefault();
-            let outputHTML = ``
-            let hashedFileName = document.getElementById('hashNameInput').value
-            const response = await fetch(`http://94.224.211.168:5501/decodehash/${hashedFileName}`)
-            decodedHashOBJ = await response.json()
-            console.log(decodedHashOBJ)
-            decodedHash = decodedHashOBJ['Decoded Hash']
-            decodedDownloadLink = decodedHashOBJ['Download Link']
-            outputHTML = `<a href="${decodedDownloadLink}">Download ${decodedHash}</a>`
-            document.getElementById('decodedDownloadLink').innerHTML = outputHTML
+            // event.preventDefault();
+            // let outputHTML = ``
+            // let hashedFileName = document.getElementById('hashNameInput').value
+            // outputHTML = `<a href="${decodedDownloadLink}">Download ${decodedHash}</a>`
+            // document.getElementById('decodedDownloadLink').innerHTML = outputHTML
         });
 
         document.getElementById('getHashedFiles').addEventListener('click', async (event) => {
@@ -150,15 +141,6 @@
             hashedFiles = await response.json()
             console.log(hashedFiles)
             alert(JSON.stringify(hashedFiles))
-        });
-        
-        document.getElementById('encodeHash').addEventListener('click', async (event) => {
-            event.preventDefault();
-            let originalFileName = document.getElementById('fileNameInput').value
-            const response = await fetch(`http://94.224.211.168:5501/addcodehash/${originalFileName}`)
-            encodedHashOBJ = await response.json()
-            encodedHash = encodedHashOBJ['Encoded Hash']
-            alert(encodedHash)
         });
 
 
