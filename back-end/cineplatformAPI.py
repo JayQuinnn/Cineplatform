@@ -33,7 +33,7 @@ def addCodehash(originalFilename):
 @app.route('/allfiles')
 def showAllFiles():
     allFiles = showAllHashedFiles()
-    return allFiles
+    return make_response(jsonify(allFiles), 200)
 
 @app.route('/decodehash//<hashedFilename>')
 def decodehash(hashedFilename):
