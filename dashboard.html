@@ -25,7 +25,10 @@
     <button id="clipPropery">Check Property</button>
     <button id="getProjectSettings">Check Project settings</button>
     <div id="renderStatus"></div>
-    <div  class="renderQueue" id="renderQueue"></div>
+    <div class="wrapper">
+        <div class="dashboard-left" id="renderQueue"></div>
+        <div class="dashboard-right" id="renderDetails"></div>
+    </div>
     <div class="wrapper">
         <div id="propertyOutput" class="dashboard-left"><h2>Clip Property</h2></div>
         <div id="projectSettings" class="dashboard-right"><h2>Project Settings</h2></div>
@@ -82,12 +85,12 @@
                             }
                         });
                 }}
-            renderQueueOutput = document.getElementById('renderQueue')
+            renderQueueOutput = document.getElementById('renderDetails')
             renderQueueOutput.innerHTML = renderQueueHTML
         });
 
         document.getElementById('getRenderStatus').addEventListener('click', async (event) => {
-            let renderStatusHTML = ''
+            let renderStatusHTML = '<h2>Render Details</h2>'
             event.preventDefault();
             const response = await fetch("http://127.0.0.1:8000/renderstatus");
             const renderStatus = await response.json();
