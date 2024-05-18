@@ -77,12 +77,14 @@ def sendToResolve(pathFileName, fileName):
     clip = mediaPool.ImportMedia( [pathFileName])
     print('Imported file: ' + pname)
     clipResolution = clip[0].GetClipProperty('Resolution')
+    clipFPS = clip[0].GetClipProperty('FPS')
     before_x, after_x = clipResolution.split('x')
     sourceWidth = int(before_x)
     sourceHeight = int(after_x)
     #Hotfix 1 - Resolution
     project.SetSetting('timelineResolutionWidth', str(sourceWidth))
     project.SetSetting('timelineResolutionHeight', str(sourceHeight))
+    project.SetSetting('timelineFrameRate', str(clipFPS))
     timeline = mediaPool.CreateTimelineFromClips('timeline',clip)
     #Hotfix 2 - Force Resolution settings
     timeline.SetSetting('timelineOutputResolutionHeight', str(sourceHeight))
@@ -97,6 +99,7 @@ def sendToResolve(pathFileName, fileName):
         "VideoQuality": 0,
         "ExportVideo": True,
         "ExportAudio": True,
+        "FrameRate": str(clipFPS),
     }
     project.SetRenderSettings(Settings)
     print('Added project ' + pname + ' to render queue.' )
