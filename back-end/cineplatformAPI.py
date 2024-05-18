@@ -1,5 +1,4 @@
 # flask --app cineplatformAPI run -p 8000
-#TODO: Add UUID per file, then rename the file to the UUID
 import uuid
 from flask import Flask, request, redirect, url_for, jsonify, make_response
 from werkzeug.utils import secure_filename
@@ -61,6 +60,7 @@ def remoteProjectSettingsGrabber():
 
 @app.route('/uploader/<email>', methods=['POST'])
 def upload_file(email):
+    #TODO: Check extension of base file and change output extension to the same one.
     if 'videoFile' not in request.files:
         return 'No file part'
     videoFile = request.files['videoFile']
@@ -77,7 +77,7 @@ def upload_file(email):
         os.rename(pathFileName, newPathName)
         outputName = fileuuid+'_output.'+extension
         addEntry(fileuuid, filename,outputName,email)
-        sendToResolve(pathFileName=newPathName, fileName=newfileName ,outputName=outputName)
+        sendToResolve(pathFileName=newPathName, fileName=newfileName ,outputName=fileuuid+'_output')
         return make_response(jsonify({'UUID': f'{fileuuid}'}), 200)
     return 'File upload failed'
 
