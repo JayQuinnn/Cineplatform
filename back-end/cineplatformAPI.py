@@ -29,7 +29,7 @@ def getRenderStatus():
 def getRenderList():
     project = projectManager.GetCurrentProject()
     renderList = project.GetRenderJobList()
-    return str(renderList)
+    return make_response(jsonify({'Render Queue': renderList}), 200)
 
 @app.route('/getproperty')
 def remoteClipPropertyGrabber():
