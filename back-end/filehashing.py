@@ -12,7 +12,8 @@ def generateHash(filename):
     print(convertedfilename)
     return convertedfilename
 
-def addHashLink(originalFilename, hashedFilename):
+def addHashLink(originalFilename):
+    hashedFilename = generateHash(originalFilename)
     with open("/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/currentfiles.json", "r") as file:
         existing_data = json.load(file)
     existing_data[hashedFilename] = originalFilename
@@ -26,14 +27,11 @@ def decodeHashLink(hashedFilename):
     value = data.get(hashedFilename)
     if value:
         print(f"Value for key '{hashedFilename}': {value}")
+        return value
     else:
         print(f"Key '{hashedFilename}' not found in the JSON data.")
-        return
+        return "Key '{hashedFilename}' not found in the JSON data."
 
-originalFilename = 'exportius-5551890843jiffjkdlmfeaiuj.mp4'
-hashedFilename = generateHash(originalFilename)
-addHashLink(originalFilename=originalFilename, hashedFilename=hashedFilename)
-decodeHashLink(hashedFilename=hashedFilename)
 
 
 
