@@ -58,9 +58,6 @@ def remoteClipPropertyGrabber():
     projectSettings = project.GetSetting()
     mediaPool = project.GetMediaPool()
     currentTimeline = mediaPool.GetCurrentFolder().GetClipList()[0].GetClipProperty()
-    # currentVideoItem = currentTimeline.GetCurrentVideoItem()
-    # currentClip = currentVideoItem.GetMediaPoolItem()
-    # print(currentClip.GetClipProperty())
     return mediaPool.GetCurrentFolder().GetClipList()[0].GetClipProperty()
 
 @app.route('/projectsettings')
