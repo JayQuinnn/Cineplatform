@@ -1,19 +1,17 @@
-import base64
+import sys
+import time
+from datetime import date
 
-def encode_file_to_base64(filename):
-    with open(filename, 'rb') as file:
-        file_content = file.read()
-        base64_string = base64.b64encode(file_content).decode('ascii')
-    return base64_string
+def generateHash(filename):
+    today = date.today()
+    formatted_date = today.strftime("%d%m%Y")  # dd/mm/YYYY format
+    t = time.localtime()
+    current_time = time.strftime("%H%M%S", t)
+    convertedfilename = formatted_date + current_time + filename[:5] + filename[-4:]
+    print(convertedfilename)
+    return convertedfilename
 
-filename = 'your_file.txt'
-base64_encoded = encode_file_to_base64(filename)
-print(f"Base64 Encoded String: {base64_encoded}")
+filename = generateHash('exportius-5551890843jiffjkdlmfeaiuj.mp4')
 
 
-def base64_to_filename(base64_string):
-    return base64_string.replace('/', '_')
 
-# Example usage:
-original_filename = base64_to_filename(base64_encoded)
-print(f"Reversible Filename: {original_filename}")
