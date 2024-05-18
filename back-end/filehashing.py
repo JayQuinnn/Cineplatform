@@ -20,6 +20,7 @@ def addHashLink(originalFilename):
     with open("/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/currentfiles.json", "w") as file:
        json.dump(existing_data, file, indent=4)
     print("New key-value pair added successfully!")
+    return hashedFilename
 
 def decodeHashLink(hashedFilename):
     with open('/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/currentfiles.json', 'r') as json_file:

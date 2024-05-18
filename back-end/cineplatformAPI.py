@@ -25,6 +25,20 @@ def clearingstorage():
     clearHashStorage()
     return 'hash storage cleared.'
 
+@app.route('/addcodehash/<originalFilename>')
+def addCodehash(originalFilename):
+    hashedFilename = addHashLink(originalFilename)
+    return hashedFilename
+
+@app.route('/allfiles')
+def showAllFiles():
+    return
+
+@app.route('/decodehash//<hashedFilename>')
+def decodehash(hashedFilename):
+    decodedFilename = decodeHashLink(hashedFilename)
+    return decodedFilename
+
 @app.route('/renderstatus')
 def getRenderStatus():
     project = projectManager.GetCurrentProject()
