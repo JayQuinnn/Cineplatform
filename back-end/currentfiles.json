@@ -126,5 +126,13 @@
         "progress": 0,
         "email": "test@email.com",
         "downloaded": false
+    },
+    "0dbedce5-3579-4827-af96-5043bd086509": {
+        "originalName": "LineTop_JochemCr.mov",
+        "outputName": "0dbedce5-3579-4827-af96-5043bd086509_output.mov",
+        "finishedRendering": false,
+        "progress": 0,
+        "email": "test@email.com",
+        "downloaded": false
     }
 }
