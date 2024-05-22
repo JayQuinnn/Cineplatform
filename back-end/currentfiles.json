@@ -134,5 +134,21 @@
         "progress": 0,
         "email": "test@email.com",
         "downloaded": false
+    },
+    "ba3a0378-a407-4291-81f0-645ff288e88c": {
+        "originalName": "LineTop_JochemCr.mov",
+        "outputName": "ba3a0378-a407-4291-81f0-645ff288e88c_output.mov",
+        "finishedRendering": false,
+        "progress": 0,
+        "email": "test@email.com",
+        "downloaded": false
+    },
+    "5b5462c7-4174-4e60-a02f-8f9657b3eaa5": {
+        "originalName": "LineTop_JochemCr.mov",
+        "outputName": "5b5462c7-4174-4e60-a02f-8f9657b3eaa5_output.mov",
+        "finishedRendering": false,
+        "progress": 0,
+        "email": "test@email.com",
+        "downloaded": false
     }
 }

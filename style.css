@@ -199,7 +199,7 @@ main {
 }
 .modal-content h2{
     margin-top: 0;
-    padding-left: 10px;
+    padding-left: 0;
 }
 .close {
     position: absolute;
@@ -210,7 +210,12 @@ main {
 }
 #uuid-bg{
     background-color: #0000005d;
-    padding: 20px;
+    padding: 2px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     border-radius: 15px;
 }
 .png-icon{
