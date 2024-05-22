@@ -23,7 +23,9 @@
       <div id="menuModal" class="modal">
         <div class="modal-content">
           <h2>We're working on it!</h2>
-          <p class="uuid-descriptor">Your file is being rendered, copy this code to check later!</p>
+          <p class="uuid-descriptor">
+            Your file is being rendered, copy this code to check later!
+          </p>
           <div id="uuid-bg">
             <p id="uuid"></p>
             <img
@@ -46,7 +48,16 @@
         </label>
         <button id="idSubmit" type="button" value="Upload">Upload</button>
       </div>
-      <div class="downloadZone"></div>
+      <div class="downloadZone">
+        <h1>Download your file</h1>
+        <input
+          class="dashboardInput"
+          id="downloadCode"
+          type="text"
+          placeholder="Enter your download code."
+        />
+        <button id="downloadFile">Download</button>
+      </div>
     </main>
     <script>
       let globalUUID;
@@ -54,8 +65,10 @@
         .getElementById("idSubmit")
         .addEventListener("click", async (event) => {
           event.preventDefault(); // Prevent the default form submission behavior
-          document.getElementById('idSubmit').innerHTML=`<img src="imgs/loading.gif" class="png-icon" alt="loading">`
-          document.getElementById('idSubmit').setAttribute('disabled', 'duck')
+          document.getElementById(
+            "idSubmit"
+          ).innerHTML = `<img src="imgs/loading.gif" class="png-icon" alt="loading">`;
+          document.getElementById("idSubmit").setAttribute("disabled", "duck");
           const fileInput = document.querySelector('input[type="file"]');
           const file = fileInput.files[0];
 
@@ -87,10 +100,9 @@
           } catch (error) {
             console.error("An error occurred:", error);
             // Handle network errors or other exceptions
-          }
-          finally {
-            document.getElementById('idSubmit').innerHTML=`Upload`
-            document.getElementById('idSubmit').removeAttribute('disabled')
+          } finally {
+            document.getElementById("idSubmit").innerHTML = `Upload`;
+            document.getElementById("idSubmit").removeAttribute("disabled");
           }
           return false;
         });
@@ -100,7 +112,7 @@
         .addEventListener("click", function () {
           document.getElementById("menuModal").style.display = "none";
         });
-        // TO DO: This only works on local host, HTTPS required.
+      // TO DO: This only works on local host, HTTPS required.
       document.getElementById("copy-uuid").addEventListener("click", () => {
         navigator.clipboard.writeText(globalUUID);
         const toast = document.getElementById("toast");
@@ -109,6 +121,13 @@
         setTimeout(() => {
           toast.classList.remove("show");
         }, 3000);
+      });
+
+
+      //To do: Make this a FETCH (back-end)
+      document.getElementById("downloadFile").addEventListener("click", () => {
+        downloadCode = document.getElementById('downloadCode').value
+        window.open(`http://94.224.211.168:5501/download/${downloadCode}`, '_blank')
       });
     </script>
   </body>

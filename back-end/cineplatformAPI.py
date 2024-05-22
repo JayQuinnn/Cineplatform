@@ -1,12 +1,12 @@
 # flask --app cineplatformAPI run -p 8000
 import uuid
-from flask import Flask, request, redirect, url_for, jsonify, make_response
+from flask import Flask, request, redirect, url_for, jsonify, make_response, send_file
 from werkzeug.utils import secure_filename
 import os
 from flask_cors import CORS
 import DaVinciResolveScript as dvr_script
 from filehashing import addHashLink, decodeHashLink, clearHashStorage, showAllHashedFiles
-from db import addEntry, updateEntry, getAllEntries, clearDB
+from db import addEntry, updateEntry, getAllEntries, clearDB, getEntry
 print('Davinci Resolve imported sucessfully.')
 import sys
 # 1. Assign Resolve
@@ -17,10 +17,17 @@ print('Davinci Resolve hook complete')
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 app.config['UPLOAD_FOLDER'] = '/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/uploads/'
+app.config['OUTPUT_FOLDER'] = '/Users/jochem/Documents/GitHub/Cineplatform/Cineplatform/back-end/uploads/output/'
 
 @app.route("/")
 def hello_world():
     return "Hello, World!"
+
+@app.route("/download/<uuid>")
+def downloadFile(uuid):
+    entry = getEntry(uuid)
+    downloadPath = app.config['OUTPUT_FOLDER'] + entry['outputName']
+    return send_file(downloadPath, as_attachment=True)
 
 @app.route('/clearhashstorage')
 def clearingstorage():
