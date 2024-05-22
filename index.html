@@ -1,70 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Video Upload Page</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Enhance</a></li>
-                <li><a href="/research">Research</a></li>
-                <li><a href="/quiz">Quiz</a></li>
-                <li><a href="/tools">Tools</a></li>
-                <li><a href="disclaimer.html">Disclaimer</a></li>
-                <li><a href="dashboard.html">Developer Dashboard</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li><a href="index.html">Enhance</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/quiz">Quiz</a></li>
+          <li><a href="/tools">Tools</a></li>
+          <li><a href="disclaimer.html">Disclaimer</a></li>
+          <li><a href="dashboard.html">Developer Dashboard</a></li>
+        </ul>
+      </nav>
     </header>
-    <h1>Enhance a Video</h1>
-    <div class="uploadZone basic">
+    <main>
+      <div id="menuModal" class="modal">
+        <div class="modal-content">
+          <h2>We're working on it!</h2>
+          <div id="uuid-bg">
+            <p id="uuid"></p>
+            <img
+              src="imgs/copy-white.png"
+              id="copy-uuid"
+              class="png-icon"
+              alt="copy icon"
+            />
+            <div id="toast" class="hide">Text copied!</div>
+          </div>
+          <span id="closeModal" class="close">&times;</span>
+        </div>
+      </div>
+      <h1>Enhance a Video</h1>
+      <div class="uploadZone basic">
         <h2 class="toggleBasic">Basic</h2>
-        <!-- <form action="/uploader" method="post" id='formSubmit' enctype="multipart/form-data"> -->
-            <label class="custom-file-upload">
-                <input type="file" name="videoFile" accept="video/*">
-                <img src="imgs/upload.png" alt="">
-            </label>
-            <button id='idSubmit' type="button" value="Upload">Upload</button>
-        <!-- </form> -->
-    </div>
-
+        <label class="custom-file-upload">
+          <input type="file" name="videoFile" accept="video/*" />
+          <img src="imgs/upload.png" alt="" />
+        </label>
+        <button id="idSubmit" type="button" value="Upload">Upload</button>
+      </div>
+      <div class="downloadZone"></div>
+    </main>
     <script>
-        document.getElementById('idSubmit').addEventListener('click', async (event) => {
-        event.preventDefault(); // Prevent the default form submission behavior
+      let globalUUID;
+      document
+        .getElementById("idSubmit")
+        .addEventListener("click", async (event) => {
+          event.preventDefault(); // Prevent the default form submission behavior
 
-        const fileInput = document.querySelector('input[type="file"]');
-        const file = fileInput.files[0];
+          const fileInput = document.querySelector('input[type="file"]');
+          const file = fileInput.files[0];
 
-        const formData = new FormData();
-        formData.append('videoFile', file);
+          const formData = new FormData();
+          formData.append("videoFile", file);
 
-        try {
-            const response = await fetch('http://94.224.211.168:5501/uploader/test@email.com', {
-                method: 'POST',
+          try {
+            const response = await fetch(
+              "http://94.224.211.168:5501/uploader/test@email.com",
+              {
+                method: "POST",
                 body: formData,
-            });
+              }
+            );
 
             if (response.ok) {
-                console.log('File uploaded successfully!');
-                data = await response.json()
-                console.log(data)
-                alert(data.UUID)
-               // Handle any other logic here (e.g., display a success message)
+              console.log("File uploaded successfully!");
+              data = await response.json();
+              console.log(data);
+              // alert(data.UUID)
+              globalUUID = data.UUID;
+              document.getElementById("uuid").innerText = data.UUID;
+              document.getElementById("menuModal").style.display = "block";
+              // Handle any other logic here (e.g., display a success message)
             } else {
-                console.error('Error uploading file:', response.statusText);
-                // Handle error cases (e.g., display an error message)
+              console.error("Error uploading file:", response.statusText);
+              // Handle error cases (e.g., display an error message)
             }
-        } catch (error) {
-            console.error('An error occurred:', error);
+          } catch (error) {
+            console.error("An error occurred:", error);
             // Handle network errors or other exceptions
-        }
-        return false
+          }
+          return false;
         });
 
-
+      document
+        .getElementById("closeModal")
+        .addEventListener("click", function () {
+          document.getElementById("menuModal").style.display = "none";
+        });
+        // TO DO: This only works on local host, HTTPS required.
+      document.getElementById("copy-uuid").addEventListener("click", () => {
+        navigator.clipboard.writeText(globalUUID);
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        // Hide the toast after 3 seconds
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3000);
+      });
     </script>
-</body>
+  </body>
 </html>

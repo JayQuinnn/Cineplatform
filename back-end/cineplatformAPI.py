@@ -123,7 +123,7 @@ def sendToResolve(pathFileName, fileName, outputName):
     print('Added project ' + pname + ' to render queue.' )
     # Render the timeline
     render_job = project.AddRenderJob()
-    # project.StartRendering()
+    project.StartRendering()
 
 if __name__ == '__main__':
    app.run(debug=True, port=5501, host='192.168.0.23')

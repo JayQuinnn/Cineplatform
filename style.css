@@ -48,7 +48,6 @@ nav ul li a {
 .uploadZone {
     margin: 0 auto;
     padding: 15px;
-    width: 55vw;
     height: 100%;
     background-color: #121F31;
     border-radius: 15px;
@@ -155,7 +154,7 @@ button{
 
 .dashboardInput {
     color: white;
-    background-color: #0e3a73;
+    background-color: #3274ca;
     border: none;
     border-radius: 15px;
     width: 30vw;
@@ -170,4 +169,71 @@ button{
 
 .devDashboard{
     padding: 30px;
+}
+
+main {
+    padding: 0 20vw;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 15px;
+    transform: translate(-50%, -50%);
+    background-color: #3274ca;
+    padding: 25px;
+    z-index: 2;
+}
+.modal-content h2{
+    margin-top: 0;
+    padding-left: 10px;
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+#uuid-bg{
+    background-color: #0000005d;
+    padding: 20px;
+    border-radius: 15px;
+}
+.png-icon{
+    height: 24px;
+    width: 24px;
+}
+
+#toast {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show the toast */
+#toast.show {
+    display: block;
+    opacity: 1;
 }
