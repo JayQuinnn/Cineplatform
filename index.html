@@ -49,13 +49,23 @@
       <div class="enhancer-container">
         <div class="enhancer-box">
           <div class="tabs">
-            <button class="tab active">Basic</button>
-            <button class="tab">Advanced</button>
+            <button id="tabBasic" class="tab active">Basic</button>
+            <button id="tabAdvanced" class="tab">Advanced</button>
           </div>
-          <div class="enhancer-box-body">
+          <div id="basicBody" class="enhancer-box-body">
             <label class="custom-file-upload">
               <input type="file" name="videoFile" accept="video/*" />
               <img src="imgs/upload.svg" alt="" />
+            </label>
+            <button class="fancyButton" id="idSubmit" type="button" value="Upload">ENHANCE</button>
+          </div>
+          <div id="advancedBody" class="enhancer-box-body" style="display: none;">
+            <label class="custom-file-upload">
+              <input type="file" name="videoFile" accept="video/*" />
+              <img src="imgs/upload.svg" alt="" />
+            </label>
+            <label> Noise Reduction
+              <input type="checkbox">
             </label>
             <button class="fancyButton" id="idSubmit" type="button" value="Upload">ENHANCE</button>
           </div>
@@ -145,6 +155,27 @@
           "_blank"
         );
       });
+
+      document.getElementById('tabBasic').addEventListener('click', () =>{
+        basicBody = document.getElementById('basicBody')
+        tabAdvanced = document.getElementById('tabAdvanced')
+        advancedBody = document.getElementById('advancedBody')
+        tabBasic = document.getElementById('tabBasic')
+        basicBody.style.display = 'flex'
+        advancedBody.style.display = 'none'
+        tabBasic.classList.add('active')
+        tabAdvanced.classList.remove('active')
+      })
+      document.getElementById('tabAdvanced').addEventListener('click', () =>{
+        basicBody = document.getElementById('basicBody')
+        tabAdvanced = document.getElementById('tabAdvanced')
+        advancedBody = document.getElementById('advancedBody')
+        tabBasic = document.getElementById('tabBasic')
+        basicBody.style.display = 'none'
+        advancedBody.style.display = 'flex'
+        tabBasic.classList.remove('active')
+        tabAdvanced.classList.add('active')
+      })
     </script>
   </body>
 </html>
