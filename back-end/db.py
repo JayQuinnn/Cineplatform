@@ -9,7 +9,7 @@ template = {
         "downloaded": False
     }
 }
-
+#Make async, then handle a lock var. Every function should check var before writing.
 def addEntry(key,ogName, outputName, email):
     data = {
         "originalName" : f"{ogName}",

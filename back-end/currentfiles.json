@@ -150,5 +150,13 @@
         "progress": 0,
         "email": "test@email.com",
         "downloaded": false
+    },
+    "711477e9-a3c1-4c63-88ec-89567fd55f03": {
+        "originalName": "Export.mov",
+        "outputName": "711477e9-a3c1-4c63-88ec-89567fd55f03_output.mov",
+        "finishedRendering": false,
+        "progress": 0,
+        "email": "test@email.com",
+        "downloaded": false
     }
 }

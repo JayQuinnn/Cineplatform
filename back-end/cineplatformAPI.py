@@ -26,6 +26,8 @@ def hello_world():
 @app.route("/download/<uuid>")
 def downloadFile(uuid):
     entry = getEntry(uuid)
+    # add check that file is done rendering
+    # mark file as downloaded
     downloadPath = app.config['OUTPUT_FOLDER'] + entry['outputName']
     return send_file(downloadPath, as_attachment=True)
 

@@ -123,8 +123,6 @@
         }, 3000);
       });
 
-
-      //To do: Make this a FETCH (back-end)
       document.getElementById("downloadFile").addEventListener("click", () => {
         downloadCode = document.getElementById('downloadCode').value
         window.open(`http://94.224.211.168:5501/download/${downloadCode}`, '_blank')
