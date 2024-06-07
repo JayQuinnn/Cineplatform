@@ -141,7 +141,7 @@
           }
           const formData = new FormData();
           formData.append("videoFile", file);
-          formData.append("Settings", settings)
+          formData.append("Settings", JSON.stringify(settings))
           
           try {
             const response = await fetch(
@@ -243,15 +243,15 @@
         document.getElementById('resolutionbtn').innerText = "Output Resolution: Auto"
       })
       document.getElementById('resolutionbtnHD').addEventListener('click', () =>{
-        resolution = "1920x1080"
+        resolution = "HD"
         document.getElementById('resolutionbtn').innerText = "Output Resolution: HD"
       })
       document.getElementById('resolutionbtnQHD').addEventListener('click', () =>{
-        resolution = "2560x1440"
+        resolution = "QHD"
         document.getElementById('resolutionbtn').innerText = "Output Resolution: QHD"
       })
       document.getElementById('resolutionbtnUHD').addEventListener('click', () =>{
-        resolution = "3840x2160"
+        resolution = "UHD"
         document.getElementById('resolutionbtn').innerText = "Output Resolution: UHD"
       })
       // Output Format formatbtn

@@ -1,4 +1,5 @@
 # flask --app cineplatformAPI run -p 8000
+import json
 import uuid
 from flask import Flask, request, redirect, url_for, jsonify, make_response, send_file
 from werkzeug.utils import secure_filename
@@ -73,6 +74,7 @@ def upload_file(email):
     if 'videoFile' not in request.files:
         return 'No file part'
     videoFile = request.files['videoFile']
+    settings = json.loads(request.form['Settings'])
     if videoFile.filename == '':
         return 'No selected file'
     if videoFile:
@@ -86,11 +88,11 @@ def upload_file(email):
         os.rename(pathFileName, newPathName)
         outputName = fileuuid+'_output.'+extension
         addEntry(fileuuid, filename,outputName,email)
-        sendToResolve(pathFileName=newPathName, fileName=newfileName ,outputName=fileuuid+'_output')
+        sendToResolve(pathFileName=newPathName, fileName=newfileName ,outputName=fileuuid+'_output', parsedSettings=settings)
         return make_response(jsonify({'UUID': f'{fileuuid}'}), 200)
     return 'File upload failed'
 
-def sendToResolve(pathFileName, fileName, outputName):
+def sendToResolve(pathFileName, fileName, outputName, parsedSettings):
     print('Sending ' + str(pathFileName) + ' to resolve.')
     # 3. Setup a Project
     pname = fileName
@@ -103,21 +105,35 @@ def sendToResolve(pathFileName, fileName, outputName):
     # 5.1. Import Media
     clip = mediaPool.ImportMedia( [pathFileName])
     print('Imported file: ' + pname)
-    clipResolution = clip[0].GetClipProperty('Resolution')
     clipFPS = clip[0].GetClipProperty('FPS')
-    before_x, after_x = clipResolution.split('x')
-    sourceWidth = int(before_x)
-    sourceHeight = int(after_x)
+    setHeight = None
+    setWidth = None
+    if parsedSettings['Resolution'] == 'Auto':
+        clipResolution = clip[0].GetClipProperty('Resolution')
+        before_x, after_x = clipResolution.split('x')
+        sourceWidth = int(before_x)
+        sourceHeight = int(after_x)
+        setHeight = sourceHeight
+        setWidth = sourceWidth
+    elif parsedSettings['Resolution'] == 'HD':
+        setHeight = '1080'
+        setWidth = "1920"
+    elif parsedSettings['Resolution'] == 'QHD':
+        setHeight = '1440'
+        setWidth = "2560"
+    elif parsedSettings['Resolution'] == 'UHD':
+        setHeight = '2160'
+        setWidth = "3480"
     #Hotfix 1 - Resolution
-    project.SetSetting('timelineResolutionWidth', str(sourceWidth))
-    project.SetSetting('timelineResolutionHeight', str(sourceHeight))
+    project.SetSetting('timelineResolutionWidth', str(setWidth))
+    project.SetSetting('timelineResolutionHeight', str(setHeight))
     project.SetSetting('timelineFrameRate', str(clipFPS))
     timeline = mediaPool.CreateTimelineFromClips('timeline',clip)
     #Hotfix 2 - Force Resolution settings
-    timeline.SetSetting('timelineOutputResolutionHeight', str(sourceHeight))
-    timeline.SetSetting('timelineOutputResolutionWidth',str(sourceWidth))
-    timeline.SetSetting('timelineResolutionHeight',str(sourceHeight))
-    timeline.SetSetting('timelineResolutionWidth',str(sourceWidth))
+    timeline.SetSetting('timelineOutputResolutionHeight', str(setHeight))
+    timeline.SetSetting('timelineOutputResolutionWidth',str(setWidth))
+    timeline.SetSetting('timelineResolutionHeight',str(setHeight))
+    timeline.SetSetting('timelineResolutionWidth',str(setWidth))
     # Set the render settings
     Settings = {
         'SelectAllFrames': True,
