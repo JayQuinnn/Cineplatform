@@ -85,6 +85,7 @@
       
     </main>
     <script>
+      const apiLink = '94.224.211.168:5501'
       let globalUUID;
       document
         .getElementById("idSubmit")
@@ -102,7 +103,7 @@
 
           try {
             const response = await fetch(
-              "http://94.224.211.168:5501/uploader/test@email.com",
+              `http://${apiLink}/uploader/test@email.com`,
               {
                 method: "POST",
                 body: formData,
@@ -151,7 +152,7 @@
       document.getElementById("downloadFile").addEventListener("click", () => {
         downloadCode = document.getElementById("downloadCode").value;
         window.open(
-          `http://94.224.211.168:5501/download/${downloadCode}`,
+          `http://${apiLink}/download/${downloadCode}`,
           "_blank"
         );
       });
