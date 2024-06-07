@@ -44,11 +44,12 @@ body{
 nav {
     background-color: var(--vidDarker);
     color: #fff;
-    padding: 20px;
+    padding: 10px 20px;
 }
 nav ul {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     list-style: none;
     margin: 0;
     padding: 0;
