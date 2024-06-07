@@ -144,6 +144,7 @@ def sendToResolve(pathFileName, fileName, outputName, parsedSettings):
         "ExportAudio": True,
         "FrameRate": str(clipFPS),
     }
+    print(Settings)
     project.SetRenderSettings(Settings)
     print('Added project ' + pname + ' to render queue.' )
     # Render the timeline
