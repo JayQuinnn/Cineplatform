@@ -18,6 +18,15 @@
           <li><a href="/tools">Tools</a></li>
           <li><a href="disclaimer.html">Disclaimer</a></li>
           <li><a href="dashboard.html">Developer Dashboard</a></li>
+          <li style="float: right;"><div class="downloadZone">
+            <input
+              class="dashboardInput"
+              id="downloadCode"
+              type="text"
+              placeholder="Enter your download code."
+            />
+            <button class="fancyButton" id="downloadFile"><img src="imgs/download.svg" style="height: 16px;" alt=""></button>
+          </div></li>
         </ul>
       </nav>
     </header>
@@ -73,16 +82,7 @@
         <div class="preview-box"></div>
       </div>
 
-      <div class="downloadZone">
-        <h1>Download your file</h1>
-        <input
-          class="dashboardInput"
-          id="downloadCode"
-          type="text"
-          placeholder="Enter your download code."
-        />
-        <button class="fancyButton" id="downloadFile">Download</button>
-      </div>
+      
     </main>
     <script>
       let globalUUID;
