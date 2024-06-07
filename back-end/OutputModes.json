@@ -1,0 +1,16 @@
+{
+    ".mov":{
+        "VideoCodec": "H.264",
+        "VideoFormat": "QuickTime",
+        "AudioCodec": "lpcm",
+        "AudioBitDepth": "16",
+        "ExportAlpha": "false" //OR "true"
+    },
+    ".mp4":{
+        "VideoCodec": "H.264", //OR "H.265"
+        "VideoFormat": "MP4",
+        "AudioCodec": "aac",
+        "AudioBitDepth": "32",
+        "ExportAlpha": "false"
+    }
+}
