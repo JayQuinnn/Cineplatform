@@ -61,6 +61,7 @@
             <button id="tabBasic" class="tab active">Basic</button>
             <button id="tabAdvanced" class="tab">Advanced</button>
           </div>
+          <!-- Basic Tab -->
           <div id="basicBody" class="enhancer-box-body">
             <label class="custom-file-upload">
               <input type="file" name="videoFile" accept="video/*" />
@@ -68,14 +69,45 @@
             </label>
             <button class="fancyButton" id="idSubmit" type="button" value="Upload">ENHANCE</button>
           </div>
+          <!-- Advanced Tab -->
           <div id="advancedBody" class="enhancer-box-body" style="display: none;">
-            <label class="custom-file-upload">
-              <input type="file" name="videoFile" accept="video/*" />
-              <img src="imgs/upload.svg" alt="" />
-            </label>
-            <label> Noise Reduction
-              <input type="checkbox">
-            </label>
+            <!-- Output Quality Dropdown Menu -->
+            <div class="dropdown">
+              <button id="qualitybtn" class="dropbtn">Output Quality: Auto</button>
+              <div class="dropdown-content">
+                <a id="qualitybtnAuto" href="#">Auto</a>
+                <a id="qualitybtnMedium" href="#">Medium - 10k mbps</a> 
+                <a id="qualitybtnHigh" href="#">High - 45k mbps</a>
+              </div>
+            </div>
+            <!-- Output Resolution Dropdown Menu -->
+            <div class="dropdown">
+              <button id="resolutionbtn" class="dropbtn">Output Resolution: Auto</button>
+              <div class="dropdown-content">
+                <a id="resolutionbtnAuto" href="#">Auto</a>
+                <a id="resolutionbtnHD" href="#">HD - 1920x1080</a> 
+                <a id="resolutionbtnQHD" href="#">QHD - 2560x1440</a>
+                <a id="resolutionbtnUHD" href="#">UHD - 3840x2160</a>
+              </div>
+            </div>
+            <!-- Output Format Dropdown Menu -->
+            <div class="dropdown">
+              <button id="formatbtn" class="dropbtn">Output Format: Auto</button>
+              <div class="dropdown-content">
+                <a id="formatbtnAuto" href="#">Auto</a>
+                <a id="formatbtnMP4" href="#">MP4</a> 
+                <a id="formatbtnMOV" href="#">MOV</a>
+              </div>
+            </div>
+            <!-- Output Sound Dropdown Menu -->
+            <div class="dropdown">
+              <button id="soundbtn" class="dropbtn">Audio Quality: Auto</button>
+              <div class="dropdown-content">
+                <a id="soundbtnAuto" href="#">Auto</a>
+                <a id="soundbtn41" href="#">44100</a> 
+                <a id="soundbtn48" href="#">48000</a>
+              </div>
+            </div>
             <button class="fancyButton" id="idSubmit" type="button" value="Upload">ENHANCE</button>
           </div>
         </div>
@@ -85,6 +117,10 @@
       
     </main>
     <script>
+      let quality = "Auto"
+      let resolution = "HD"
+      let format = "MOV"
+      let audioQuality = "48000"
       const apiLink = '94.224.211.168:5501'
       let globalUUID;
       document
@@ -156,7 +192,7 @@
           "_blank"
         );
       });
-
+      // Tab Switcher!
       document.getElementById('tabBasic').addEventListener('click', () =>{
         basicBody = document.getElementById('basicBody')
         tabAdvanced = document.getElementById('tabAdvanced')
@@ -176,6 +212,67 @@
         advancedBody.style.display = 'flex'
         tabBasic.classList.remove('active')
         tabAdvanced.classList.add('active')
+      })
+
+      // Advanced Features Code!
+      // document.getElementById('qualitybtnAuto').addEventListener('click', () =>{
+        
+      // })
+      // Advanced Quality
+      document.getElementById('qualitybtnAuto').addEventListener('click', () =>{
+        quality = "Auto"
+        document.getElementById('qualitybtn').innerText = "Output Quality: Auto"
+      })
+      document.getElementById('qualitybtnMedium').addEventListener('click', () =>{
+        quality = "Medium"
+        document.getElementById('qualitybtn').innerText = "Output Quality: Medium"
+      })
+      document.getElementById('qualitybtnHigh').addEventListener('click', () =>{
+        quality = "High"
+        document.getElementById('qualitybtn').innerText = "Output Quality: High"
+      })
+      // Advanced Resolution
+      document.getElementById('resolutionbtnAuto').addEventListener('click', () =>{
+        resolution = "Auto"
+        document.getElementById('resolutionbtn').innerText = "Output Resolution: Auto"
+      })
+      document.getElementById('resolutionbtnHD').addEventListener('click', () =>{
+        resolution = "1920x1080"
+        document.getElementById('resolutionbtn').innerText = "Output Resolution: HD"
+      })
+      document.getElementById('resolutionbtnQHD').addEventListener('click', () =>{
+        resolution = "2560x1440"
+        document.getElementById('resolutionbtn').innerText = "Output Resolution: QHD"
+      })
+      document.getElementById('resolutionbtnUHD').addEventListener('click', () =>{
+        resolution = "3840x2160"
+        document.getElementById('resolutionbtn').innerText = "Output Resolution: UHD"
+      })
+      // Output Format formatbtn
+      document.getElementById('formatbtnAuto').addEventListener('click', () =>{
+        format = "Auto"
+        document.getElementById('formatbtn').innerText = "Output Format: Auto"
+      })
+      document.getElementById('formatbtnMP4').addEventListener('click', () =>{
+        format = "MP4"
+        document.getElementById('formatbtn').innerText = "Output Format: MP4"
+      })
+      document.getElementById('formatbtnMOV').addEventListener('click', () =>{
+        format = "MOV"
+        document.getElementById('formatbtn').innerText = "Output Format: MOV"
+      })
+      // Output Sound soundbtn
+      document.getElementById('soundbtnAuto').addEventListener('click', () =>{
+        audioQuality = "Auto"
+        document.getElementById('soundbtn').innerText = "Audio Quality: Auto"
+      })
+      document.getElementById('soundbtn41').addEventListener('click', () =>{
+        audioQuality = "44100"
+        document.getElementById('soundbtn').innerText = "Audio Quality: 44100"
+      })
+      document.getElementById('soundbtn48').addEventListener('click', () =>{
+        audioQuality = "48000"
+        document.getElementById('soundbtn').innerText = "Audio Quality: 48000"
       })
     </script>
   </body>
