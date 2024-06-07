@@ -118,8 +118,8 @@
     </main>
     <script>
       let quality = "Auto"
-      let resolution = "HD"
-      let format = "MOV"
+      let resolution = "Auto"
+      let format = "Auto"
       let audioQuality = "48000"
       const apiLink = '94.224.211.168:5501'
       let globalUUID;
@@ -133,16 +133,22 @@
           document.getElementById("idSubmit").setAttribute("disabled", "duck");
           const fileInput = document.querySelector('input[type="file"]');
           const file = fileInput.files[0];
-
+          const settings = {
+                      "VideoFormat":format,
+                      "Resolution":resolution,
+                      "AudioSampleRate":audioQuality,
+                      "VideoQuality":quality,
+          }
           const formData = new FormData();
           formData.append("videoFile", file);
-
+          formData.append("Settings", settings)
+          
           try {
             const response = await fetch(
-              `http://${apiLink}/uploader/test@email.com`,
+              `http://${apiLink}/uploader/none`,
               {
                 method: "POST",
-                body: formData,
+                body: formData
               }
             );
 
@@ -220,7 +226,7 @@
       // })
       // Advanced Quality
       document.getElementById('qualitybtnAuto').addEventListener('click', () =>{
-        quality = "Auto"
+        quality = "0"
         document.getElementById('qualitybtn').innerText = "Output Quality: Auto"
       })
       document.getElementById('qualitybtnMedium').addEventListener('click', () =>{
@@ -263,7 +269,7 @@
       })
       // Output Sound soundbtn
       document.getElementById('soundbtnAuto').addEventListener('click', () =>{
-        audioQuality = "Auto"
+        audioQuality = "48000"
         document.getElementById('soundbtn').innerText = "Audio Quality: Auto"
       })
       document.getElementById('soundbtn41').addEventListener('click', () =>{

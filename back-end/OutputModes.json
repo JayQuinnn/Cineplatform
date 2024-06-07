@@ -4,7 +4,8 @@
         "VideoFormat": "QuickTime",
         "AudioCodec": "lpcm",
         "AudioBitDepth": "16",
-        "ExportAlpha": "false" //OR "true"
+        "ExportAlpha": "false", //OR "true"
+        "AudioSampleRate": "48000"
     },
     ".mp4":{
         "VideoCodec": "H.264", //OR "H.265"
