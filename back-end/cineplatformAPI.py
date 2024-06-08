@@ -88,6 +88,7 @@ def upload_file(email):
         os.rename(pathFileName, newPathName)
         outputName = fileuuid+'_output.'+extension
         addEntry(fileuuid, filename,outputName,email)
+        emailHandler(email=email, UUIDcode=fileuuid)
         sendToResolve(pathFileName=newPathName, fileName=newfileName ,outputName=fileuuid+'_output', parsedSettings=settings)
         return make_response(jsonify({'UUID': f'{fileuuid}'}), 200)
     return 'File upload failed'
@@ -152,6 +153,11 @@ def sendToResolve(pathFileName, fileName, outputName, parsedSettings):
     # Render the timeline
     render_job = project.AddRenderJob()
     # project.StartRendering()
+
+def emailHandler(email, UUIDcode):
+    if email != 'none':
+        None # Send e-mail
+    return
 
 if __name__ == '__main__':
    app.run(debug=True, port=5501, host='192.168.0.23')
