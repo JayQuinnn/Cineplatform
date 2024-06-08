@@ -129,6 +129,8 @@ def sendToResolve(pathFileName, fileName, outputName, parsedSettings):
     project.SetSetting('timelineResolutionHeight', str(setHeight))
     project.SetSetting('timelineFrameRate', str(clipFPS))
     timeline = mediaPool.CreateTimelineFromClips('timeline',clip)
+    project.SetSetting('superScale', 2, 1, 0.5)
+    clip[0].SetClipProperty('Super Scale', 2, 1, 0.5)
     #Hotfix 2 - Force Resolution settings
     timeline.SetSetting('timelineOutputResolutionHeight', str(setHeight))
     timeline.SetSetting('timelineOutputResolutionWidth',str(setWidth))
