@@ -319,6 +319,7 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     position: relative;
     min-width: 220px;
+    height: 380px;
 }
 
 .enhancer-box-body{
@@ -330,7 +331,7 @@ main {
     box-sizing: border-box;
 }
 .preview-box{
-    background: url('https://media1.tenor.com/m/ZAMoMuQgf9UAAAAd/mapache-pedro.gif') no-repeat center;
+    background: url('/imgs/previewsm.gif') no-repeat center;
     background-size: cover;
 
 }
@@ -406,3 +407,6 @@ main {
     border: none;
     width: 45%;
   }
+video{
+    width: 100%;
+}
