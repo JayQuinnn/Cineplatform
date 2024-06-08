@@ -67,6 +67,7 @@
               <input type="file" name="videoFile" accept="video/*" />
               <img src="imgs/upload.svg" alt="" />
             </label>
+            <input id="email" class="email" type="email" placeholder="example@email.com">
             <button class="fancyButton" id="idSubmit" type="button" value="Upload">ENHANCE</button>
           </div>
           <!-- Advanced Tab -->
@@ -141,10 +142,14 @@
           const formData = new FormData();
           formData.append("videoFile", file);
           formData.append("Settings", JSON.stringify(settings))
-          
+          formEmail = document.getElementById('email').value
+          console.log(typeof(formEmail) +' : ('+ formEmail + ")")
+          if (formEmail == '') {
+            formEmail = 'none'
+          }
           try {
             const response = await fetch(
-              `http://${apiLink}/uploader/none`,
+              `http://${apiLink}/uploader/${formEmail}`,
               {
                 method: "POST",
                 body: formData
