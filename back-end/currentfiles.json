@@ -350,5 +350,21 @@
         "progress": 0,
         "email": "work.lasse.face@gmail.com",
         "downloaded": false
+    },
+    "034544d2-3104-4dca-8235-f515c9c4964a": {
+        "originalName": "FreeChoicePreview.mp4",
+        "outputName": "034544d2-3104-4dca-8235-f515c9c4964a_output.mov",
+        "finishedRendering": false,
+        "progress": 0,
+        "email": "none",
+        "downloaded": false
+    },
+    "0f3c764b-172e-4668-ae19-f90edcf91b3f": {
+        "originalName": "videoplayback.mp4",
+        "outputName": "0f3c764b-172e-4668-ae19-f90edcf91b3f_output.mov",
+        "finishedRendering": false,
+        "progress": 0,
+        "email": "none",
+        "downloaded": false
     }
 }

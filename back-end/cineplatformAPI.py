@@ -87,7 +87,7 @@ def upload_file(email):
         newfileName = fileuuid+'.'+extension
         newPathName = os.path.join(app.config['UPLOAD_FOLDER'], newfileName)
         os.rename(pathFileName, newPathName)
-        outputName = fileuuid+'_output.'+extension
+        outputName = fileuuid+'_output.mov'
         addEntry(fileuuid, filename,outputName,email)
         emailHandler(email=email, UUIDcode=fileuuid)
         sendToResolve(pathFileName=newPathName, fileName=newfileName ,outputName=fileuuid+'_output', parsedSettings=settings)
