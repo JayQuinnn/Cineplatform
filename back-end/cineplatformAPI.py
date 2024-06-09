@@ -1,6 +1,7 @@
 # flask --app cineplatformAPI run -p 8000
 import json
 import uuid
+import yagmail
 from flask import Flask, request, redirect, url_for, jsonify, make_response, send_file
 from werkzeug.utils import secure_filename
 import os
@@ -156,8 +157,30 @@ def sendToResolve(pathFileName, fileName, outputName, parsedSettings):
 
 def emailHandler(email, UUIDcode):
     if email != 'none':
-        None # Send e-mail
+        send_email(recipient_email=email, UUIDcode=UUIDcode)
     return
+
+def send_email(recipient_email, UUIDcode):
+    # Your email credentials
+    sender_email = "videnhancenotifications@gmail.com"
+    # Email subject and content
+    subject = "vidEnhance - The code to your enhanced video!"
+    body = f"Hi! Your video is almost done rendering! Here is the code: {UUIDcode}."
+
+    try:
+        # Initialize yagmail SMTP connection
+        yag = yagmail.SMTP(sender_email, oauth2_file="./google_creds.json")
+
+        # Send the email
+        yag.send(
+            to=recipient_email,
+            subject=subject,
+            contents=body
+        )
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Error sending email: {e}")
+
 
 if __name__ == '__main__':
    app.run(debug=True, port=5501, host='192.168.0.23')
