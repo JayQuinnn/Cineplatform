@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/imgs/VidEnhance2.png">
+    <link rel="icon" type="image/x-icon" href="/imgs/VidEnhance2.png" />
     <link rel="stylesheet" href="style.css" />
     <title>Video Upload Page</title>
   </head>
@@ -11,22 +11,26 @@
     <header>
       <nav>
         <ul>
-          <div style="display: flex; align-items: center;">
-            <li><img src="/imgs/VidEnhance2.png" alt="Logo"></li>
+          <div style="display: flex; align-items: center">
+            <li><img src="/imgs/VidEnhance2.png" alt="Logo" /></li>
             <li><a href="index.html">Enhance</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="disclaimer.html">Disclaimer</a></li>
             <li><a href="dashboard.html">Developer Dashboard</a></li>
           </div>
-          <li style="float: right;"><div class="downloadZone">
-            <input
-              class="dashboardInput"
-              id="downloadCode"
-              type="text"
-              placeholder="Enter your download code."
-            />
-            <button class="fancyButton" id="downloadFile"><img src="imgs/download.svg" style="height: 16px;" alt=""></button>
-          </div></li>
+          <li style="float: right">
+            <div class="downloadZone">
+              <input
+                class="dashboardInput"
+                id="downloadCode"
+                type="text"
+                placeholder="Enter your download code."
+              />
+              <button class="fancyButton" id="downloadFile">
+                <img src="imgs/download.svg" style="height: 16px" alt="" />
+              </button>
+            </div>
+          </li>
         </ul>
       </nav>
     </header>
@@ -50,7 +54,7 @@
           <span id="closeModal" class="close">&times;</span>
         </div>
       </div>
-      <h1>Video <span class="titleColour">Enhancer</span></h1>
+      <h1 id="mainTitle">Video <span class="titleColour">Enhancer</span></h1>
       <p class="subTitle">
         Try VidEnhance to instantly improve video quality! This can include
         resolution, sharpness, brightness and colouring!
@@ -67,36 +71,58 @@
               <input type="file" name="videoFile" accept="video/*" />
               <img src="imgs/upload.svg" alt="" />
             </label>
-            <input id="email" class="email" type="email" placeholder="example@email.com">
-            <button class="fancyButton" id="idSubmit" type="button" value="Upload">ENHANCE</button>
+            <input
+              id="email"
+              class="email"
+              type="email"
+              placeholder="example@email.com"
+            />
+            <button
+              class="fancyButton"
+              id="idSubmit"
+              type="button"
+              value="Upload"
+            >
+              ENHANCE
+            </button>
           </div>
           <!-- Advanced Tab -->
-          <div id="advancedBody" class="enhancer-box-body" style="display: none;">
+          <div
+            id="advancedBody"
+            class="enhancer-box-body"
+            style="display: none"
+          >
             <!-- Output Quality Dropdown Menu -->
             <div class="dropdown">
-              <button id="qualitybtn" class="dropbtn">Output Quality: Auto</button>
+              <button id="qualitybtn" class="dropbtn">
+                Output Quality: Auto
+              </button>
               <div class="dropdown-content">
                 <a id="qualitybtnAuto" href="#">Auto</a>
-                <a id="qualitybtnMedium" href="#">Medium - 10k mbps</a> 
+                <a id="qualitybtnMedium" href="#">Medium - 10k mbps</a>
                 <a id="qualitybtnHigh" href="#">High - 45k mbps</a>
               </div>
             </div>
             <!-- Output Resolution Dropdown Menu -->
             <div class="dropdown">
-              <button id="resolutionbtn" class="dropbtn">Output Resolution: Auto</button>
+              <button id="resolutionbtn" class="dropbtn">
+                Output Resolution: Auto
+              </button>
               <div class="dropdown-content">
                 <a id="resolutionbtnAuto" href="#">Auto</a>
-                <a id="resolutionbtnHD" href="#">HD - 1920x1080</a> 
+                <a id="resolutionbtnHD" href="#">HD - 1920x1080</a>
                 <a id="resolutionbtnQHD" href="#">QHD - 2560x1440</a>
                 <a id="resolutionbtnUHD" href="#">UHD - 3840x2160</a>
               </div>
             </div>
             <!-- Output Format Dropdown Menu -->
             <div class="dropdown">
-              <button id="formatbtn" class="dropbtn">Output Format: Auto</button>
+              <button id="formatbtn" class="dropbtn">
+                Output Format: Auto
+              </button>
               <div class="dropdown-content">
                 <a id="formatbtnAuto" href="#">Auto</a>
-                <a id="formatbtnMP4" href="#">MP4</a> 
+                <a id="formatbtnMP4" href="#">MP4</a>
                 <a id="formatbtnMOV" href="#">MOV</a>
               </div>
             </div>
@@ -105,24 +131,85 @@
               <button id="soundbtn" class="dropbtn">Audio Quality: Auto</button>
               <div class="dropdown-content">
                 <a id="soundbtnAuto" href="#">Auto</a>
-                <a id="soundbtn41" href="#">44100</a> 
+                <a id="soundbtn41" href="#">44100</a>
                 <a id="soundbtn48" href="#">48000</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="preview-box">
-        </div>
+        <div class="preview-box"></div>
       </div>
-
+      <div class="parent">
+        <div class="demoSample demo1"></div>
+        <div class="demoSample demo2"></div>
+        <div class="demoSample demo3"></div>
+      </div>
+      <p class="centertext">No video? Try one of these.</p>
+      <div class="tutorial-section">
+        <h1>How it works</h1>
+        <div class="tutorial-parent">
+          <div class="tutorial-card">
+            <div>
+              <img
+                class="tutorial-thumbnail"
+                src="/imgs/Tutorial/Uploadthefile.jpg"
+                alt=""
+              />
+            </div>
+            <div class="tutorial-content">
+              <h3>Upload your video</h3>
+              <p>
+                Upload your video from your computer. Every video file format is
+                supported. Including MP4, MOV, RAW, LOG, etc.
+              </p>
+            </div>
+          </div>
+          <div class="tutorial-card">
+            <div>
+              <img
+                class="tutorial-thumbnail"
+                src="/imgs/Tutorial/enhanceautomatically.jpg"
+                alt=""
+              />
+            </div>
+            <div class="tutorial-content">
+              <h3>Magical Enhancement</h3>
+              <p>
+                After carefully analysing your video, our magic will improve the
+                sharpness and reduce the amount of noise!
+              </p>
+            </div>
+          </div>
+          <div class="tutorial-card">
+            <div>
+              <img
+                class="tutorial-thumbnail"
+                src="/imgs/Tutorial/downloadthefile.jpg"
+                alt=""
+              />
+            </div>
+            <div class="tutorial-content">
+              <h3>Download your video</h3>
+              <p>
+                After our magic did the work, you can download the file again
+                using your own special code!
+              </p>
+            </div>
+          </div>
+        </div>
+        <a href="#mainTitle" class="fancyButton try">Try it out</a>
+      </div>
       
     </main>
+    <footer>
+        <p>VidEnhance is a purely fictional product. Designed and programmed by Jochem Crab for his thesis at Erasmushogeschool Brussel</p>
+    </footer>
     <script>
-      let quality = "Auto"
-      let resolution = "Auto"
-      let format = "Auto"
-      let audioQuality = "48000"
-      const apiLink = '94.224.211.168:5501'
+      let quality = "Auto";
+      let resolution = "Auto";
+      let format = "Auto";
+      let audioQuality = "48000";
+      const apiLink = "94.224.211.168:5501";
       let globalUUID;
       document
         .getElementById("idSubmit")
@@ -135,25 +222,25 @@
           const fileInput = document.querySelector('input[type="file"]');
           const file = fileInput.files[0];
           const settings = {
-                      "VideoFormat":format,
-                      "Resolution":resolution,
-                      "AudioSampleRate":audioQuality,
-                      "VideoQuality":quality,
-          }
+            VideoFormat: format,
+            Resolution: resolution,
+            AudioSampleRate: audioQuality,
+            VideoQuality: quality,
+          };
           const formData = new FormData();
           formData.append("videoFile", file);
-          formData.append("Settings", JSON.stringify(settings))
-          formEmail = document.getElementById('email').value
-          console.log(typeof(formEmail) +' : ('+ formEmail + ")")
-          if (formEmail == '') {
-            formEmail = 'none'
+          formData.append("Settings", JSON.stringify(settings));
+          formEmail = document.getElementById("email").value;
+          console.log(typeof formEmail + " : (" + formEmail + ")");
+          if (formEmail == "") {
+            formEmail = "none";
           }
           try {
             const response = await fetch(
               `http://${apiLink}/uploader/${formEmail}`,
               {
                 method: "POST",
-                body: formData
+                body: formData,
               }
             );
 
@@ -198,93 +285,111 @@
 
       document.getElementById("downloadFile").addEventListener("click", () => {
         downloadCode = document.getElementById("downloadCode").value;
-        window.open(
-          `http://${apiLink}/download/${downloadCode}`,
-          "_blank"
-        );
+        window.open(`http://${apiLink}/download/${downloadCode}`, "_blank");
       });
       // Tab Switcher!
-      document.getElementById('tabBasic').addEventListener('click', () =>{
-        basicBody = document.getElementById('basicBody')
-        tabAdvanced = document.getElementById('tabAdvanced')
-        advancedBody = document.getElementById('advancedBody')
-        tabBasic = document.getElementById('tabBasic')
-        basicBody.style.display = 'flex'
-        advancedBody.style.display = 'none'
-        tabBasic.classList.add('active')
-        tabAdvanced.classList.remove('active')
-      })
-      document.getElementById('tabAdvanced').addEventListener('click', () =>{
-        basicBody = document.getElementById('basicBody')
-        tabAdvanced = document.getElementById('tabAdvanced')
-        advancedBody = document.getElementById('advancedBody')
-        tabBasic = document.getElementById('tabBasic')
-        basicBody.style.display = 'none'
-        advancedBody.style.display = 'flex'
-        tabBasic.classList.remove('active')
-        tabAdvanced.classList.add('active')
-      })
+      document.getElementById("tabBasic").addEventListener("click", () => {
+        basicBody = document.getElementById("basicBody");
+        tabAdvanced = document.getElementById("tabAdvanced");
+        advancedBody = document.getElementById("advancedBody");
+        tabBasic = document.getElementById("tabBasic");
+        basicBody.style.display = "flex";
+        advancedBody.style.display = "none";
+        tabBasic.classList.add("active");
+        tabAdvanced.classList.remove("active");
+      });
+      document.getElementById("tabAdvanced").addEventListener("click", () => {
+        basicBody = document.getElementById("basicBody");
+        tabAdvanced = document.getElementById("tabAdvanced");
+        advancedBody = document.getElementById("advancedBody");
+        tabBasic = document.getElementById("tabBasic");
+        basicBody.style.display = "none";
+        advancedBody.style.display = "flex";
+        tabBasic.classList.remove("active");
+        tabAdvanced.classList.add("active");
+      });
 
       // Advanced Features Code!
       // document.getElementById('qualitybtnAuto').addEventListener('click', () =>{
-        
+
       // })
       // Advanced Quality
-      document.getElementById('qualitybtnAuto').addEventListener('click', () =>{
-        quality = "0"
-        document.getElementById('qualitybtn').innerText = "Output Quality: Auto"
-      })
-      document.getElementById('qualitybtnMedium').addEventListener('click', () =>{
-        quality = "Medium"
-        document.getElementById('qualitybtn').innerText = "Output Quality: Medium"
-      })
-      document.getElementById('qualitybtnHigh').addEventListener('click', () =>{
-        quality = "High"
-        document.getElementById('qualitybtn').innerText = "Output Quality: High"
-      })
+      document
+        .getElementById("qualitybtnAuto")
+        .addEventListener("click", () => {
+          quality = "0";
+          document.getElementById("qualitybtn").innerText =
+            "Output Quality: Auto";
+        });
+      document
+        .getElementById("qualitybtnMedium")
+        .addEventListener("click", () => {
+          quality = "Medium";
+          document.getElementById("qualitybtn").innerText =
+            "Output Quality: Medium";
+        });
+      document
+        .getElementById("qualitybtnHigh")
+        .addEventListener("click", () => {
+          quality = "High";
+          document.getElementById("qualitybtn").innerText =
+            "Output Quality: High";
+        });
       // Advanced Resolution
-      document.getElementById('resolutionbtnAuto').addEventListener('click', () =>{
-        resolution = "Auto"
-        document.getElementById('resolutionbtn').innerText = "Output Resolution: Auto"
-      })
-      document.getElementById('resolutionbtnHD').addEventListener('click', () =>{
-        resolution = "HD"
-        document.getElementById('resolutionbtn').innerText = "Output Resolution: HD"
-      })
-      document.getElementById('resolutionbtnQHD').addEventListener('click', () =>{
-        resolution = "QHD"
-        document.getElementById('resolutionbtn').innerText = "Output Resolution: QHD"
-      })
-      document.getElementById('resolutionbtnUHD').addEventListener('click', () =>{
-        resolution = "UHD"
-        document.getElementById('resolutionbtn').innerText = "Output Resolution: UHD"
-      })
+      document
+        .getElementById("resolutionbtnAuto")
+        .addEventListener("click", () => {
+          resolution = "Auto";
+          document.getElementById("resolutionbtn").innerText =
+            "Output Resolution: Auto";
+        });
+      document
+        .getElementById("resolutionbtnHD")
+        .addEventListener("click", () => {
+          resolution = "HD";
+          document.getElementById("resolutionbtn").innerText =
+            "Output Resolution: HD";
+        });
+      document
+        .getElementById("resolutionbtnQHD")
+        .addEventListener("click", () => {
+          resolution = "QHD";
+          document.getElementById("resolutionbtn").innerText =
+            "Output Resolution: QHD";
+        });
+      document
+        .getElementById("resolutionbtnUHD")
+        .addEventListener("click", () => {
+          resolution = "UHD";
+          document.getElementById("resolutionbtn").innerText =
+            "Output Resolution: UHD";
+        });
       // Output Format formatbtn
-      document.getElementById('formatbtnAuto').addEventListener('click', () =>{
-        format = "Auto"
-        document.getElementById('formatbtn').innerText = "Output Format: Auto"
-      })
-      document.getElementById('formatbtnMP4').addEventListener('click', () =>{
-        format = "MP4"
-        document.getElementById('formatbtn').innerText = "Output Format: MP4"
-      })
-      document.getElementById('formatbtnMOV').addEventListener('click', () =>{
-        format = "MOV"
-        document.getElementById('formatbtn').innerText = "Output Format: MOV"
-      })
+      document.getElementById("formatbtnAuto").addEventListener("click", () => {
+        format = "Auto";
+        document.getElementById("formatbtn").innerText = "Output Format: Auto";
+      });
+      document.getElementById("formatbtnMP4").addEventListener("click", () => {
+        format = "MP4";
+        document.getElementById("formatbtn").innerText = "Output Format: MP4";
+      });
+      document.getElementById("formatbtnMOV").addEventListener("click", () => {
+        format = "MOV";
+        document.getElementById("formatbtn").innerText = "Output Format: MOV";
+      });
       // Output Sound soundbtn
-      document.getElementById('soundbtnAuto').addEventListener('click', () =>{
-        audioQuality = "48000"
-        document.getElementById('soundbtn').innerText = "Audio Quality: Auto"
-      })
-      document.getElementById('soundbtn41').addEventListener('click', () =>{
-        audioQuality = "44100"
-        document.getElementById('soundbtn').innerText = "Audio Quality: 44100"
-      })
-      document.getElementById('soundbtn48').addEventListener('click', () =>{
-        audioQuality = "48000"
-        document.getElementById('soundbtn').innerText = "Audio Quality: 48000"
-      })
+      document.getElementById("soundbtnAuto").addEventListener("click", () => {
+        audioQuality = "48000";
+        document.getElementById("soundbtn").innerText = "Audio Quality: Auto";
+      });
+      document.getElementById("soundbtn41").addEventListener("click", () => {
+        audioQuality = "44100";
+        document.getElementById("soundbtn").innerText = "Audio Quality: 44100";
+      });
+      document.getElementById("soundbtn48").addEventListener("click", () => {
+        audioQuality = "48000";
+        document.getElementById("soundbtn").innerText = "Audio Quality: 48000";
+      });
     </script>
   </body>
 </html>
