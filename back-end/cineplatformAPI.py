@@ -153,7 +153,7 @@ def sendToResolve(pathFileName, fileName, outputName, parsedSettings):
     print('Added project ' + pname + ' to render queue.' )
     # Render the timeline
     render_job = project.AddRenderJob()
-    # project.StartRendering()
+    project.StartRendering()
 
 def emailHandler(email, UUIDcode):
     if email != 'none':
