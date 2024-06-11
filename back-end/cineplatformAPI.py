@@ -131,8 +131,8 @@ def sendToResolve(pathFileName, fileName, outputName, parsedSettings):
     project.SetSetting('timelineResolutionHeight', str(setHeight))
     project.SetSetting('timelineFrameRate', str(clipFPS))
     timeline = mediaPool.CreateTimelineFromClips('timeline',clip)
-    project.SetSetting('superScale', 2, 1, 0.5)
-    clip[0].SetClipProperty('Super Scale', 2, 1, 0.5)
+    # project.SetSetting('superScale', 2, 1, 0.5)
+    # clip[0].SetClipProperty('Super Scale', 2, 1, 0.5)
     #Hotfix 2 - Force Resolution settings
     timeline.SetSetting('timelineOutputResolutionHeight', str(setHeight))
     timeline.SetSetting('timelineOutputResolutionWidth',str(setWidth))
@@ -183,4 +183,4 @@ def send_email(recipient_email, UUIDcode):
 
 
 if __name__ == '__main__':
-   app.run(debug=True, port=5501, host='192.168.0.23')
+   app.run(debug=True, port=5501, host='10.2.89.108')
